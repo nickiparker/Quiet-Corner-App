@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/saffie/dev-nicki/Quiet-Corner-App/Quiet-Corner/PreferencesTableViewCell.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/saffie/dev-nicki/Quiet-Corner-App/Quiet-Corner/PreferencesTableViewCell.xib">
+   </FileRef>
+   <FileRef
       location = "group:Quiet-Corner.xcodeproj">
    </FileRef>
    <FileRef

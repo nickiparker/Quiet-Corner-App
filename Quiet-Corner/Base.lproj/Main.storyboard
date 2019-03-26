@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ON4-X5-30L">
-                                <rect key="frame" x="289" y="40" width="52" height="30"/>
+                                <rect key="frame" x="166" y="357" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log out"/>
+                                <state key="normal" title="Log in"/>
                                 <connections>
-                                    <action selector="doBtnLogOut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CjO-ji-7UQ"/>
+                                    <action selector="doBtnLogIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zGB-ZG-nfw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -31,11 +31,38 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="doBtnLogOut" destination="ON4-X5-30L" id="hgt-fy-jDw"/>
+                        <segue destination="hws-Am-cF4" kind="show" identifier="goHome" id="Vvw-jq-d7f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7en-xf-brQ">
+            <objects>
+                <viewController id="hws-Am-cF4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L9f-Ve-EOt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmf-mJ-pUB">
+                                <rect key="frame" x="149.5" y="323" width="76" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Hmf-mJ-pUB" firstAttribute="centerY" secondItem="L9f-Ve-EOt" secondAttribute="centerY" id="SsL-O4-jL0"/>
+                            <constraint firstItem="Hmf-mJ-pUB" firstAttribute="centerX" secondItem="L9f-Ve-EOt" secondAttribute="centerX" id="uU2-yO-FnH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cLk-kY-Nkc"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0BT-hn-BTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1482" y="-102"/>
         </scene>
     </scenes>
 </document>
