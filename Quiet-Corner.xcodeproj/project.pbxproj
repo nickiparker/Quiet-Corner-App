@@ -8,23 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		0C3209EE2219F58100C1CFEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3209ED2219F58100C1CFEA /* AppDelegate.swift */; };
-		0C3209F02219F58100C1CFEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3209EF2219F58100C1CFEA /* ViewController.swift */; };
+		0C3209F02219F58100C1CFEA /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3209EF2219F58100C1CFEA /* SplashViewController.swift */; };
 		0C3209F32219F58100C1CFEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C3209F12219F58100C1CFEA /* Main.storyboard */; };
 		0C3209F52219F58300C1CFEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C3209F42219F58300C1CFEA /* Assets.xcassets */; };
 		0C3209F82219F58300C1CFEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C3209F62219F58300C1CFEA /* LaunchScreen.storyboard */; };
 		0C320A002219F6AB00C1CFEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C3209FF2219F6AB00C1CFEA /* GoogleService-Info.plist */; };
+		0C858889224BDFF30016A584 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C858888224BDFF30016A584 /* HomeViewController.swift */; };
 		3D72F960A107D3943A75B7CD /* Pods_Quiet_Corner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A18F8BEBA34C7182510C72 /* Pods_Quiet_Corner.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C3209EA2219F58100C1CFEA /* Quiet-Corner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiet-Corner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C3209ED2219F58100C1CFEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0C3209EF2219F58100C1CFEA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0C3209EF2219F58100C1CFEA /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		0C3209F22219F58100C1CFEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0C3209F42219F58300C1CFEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C3209F72219F58300C1CFEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C3209F92219F58300C1CFEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C3209FF2219F6AB00C1CFEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C858888224BDFF30016A584 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3E1E7AA9570D32C0B68A67F4 /* Pods-Quiet-Corner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quiet-Corner.debug.xcconfig"; path = "Target Support Files/Pods-Quiet-Corner/Pods-Quiet-Corner.debug.xcconfig"; sourceTree = "<group>"; };
 		67A18F8BEBA34C7182510C72 /* Pods_Quiet_Corner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quiet_Corner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8499739CA1D5E2491B46D8B /* Pods-Quiet-Corner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quiet-Corner.release.xcconfig"; path = "Target Support Files/Pods-Quiet-Corner/Pods-Quiet-Corner.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,12 +74,13 @@
 			isa = PBXGroup;
 			children = (
 				0C3209ED2219F58100C1CFEA /* AppDelegate.swift */,
-				0C3209EF2219F58100C1CFEA /* ViewController.swift */,
+				0C3209EF2219F58100C1CFEA /* SplashViewController.swift */,
 				0C3209F12219F58100C1CFEA /* Main.storyboard */,
 				0C3209F42219F58300C1CFEA /* Assets.xcassets */,
 				0C3209F62219F58300C1CFEA /* LaunchScreen.storyboard */,
 				0C3209FF2219F6AB00C1CFEA /* GoogleService-Info.plist */,
 				0C3209F92219F58300C1CFEA /* Info.plist */,
+				0C858888224BDFF30016A584 /* HomeViewController.swift */,
 			);
 			path = "Quiet-Corner";
 			sourceTree = "<group>";
@@ -279,8 +282,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C3209F02219F58100C1CFEA /* ViewController.swift in Sources */,
+				0C3209F02219F58100C1CFEA /* SplashViewController.swift in Sources */,
 				0C3209EE2219F58100C1CFEA /* AppDelegate.swift in Sources */,
+				0C858889224BDFF30016A584 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

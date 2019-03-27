@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SplashViewController.swift
 //  Quiet-Corner
 //
 //  Created by NICKI PARKER on 17/02/2019.
@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseUI
 
-class ViewController: UIViewController {
+class SplashViewController: UIViewController {
    // @IBOutlet weak var doBtnLogIn: UIButton!
     
 //    fileprivate(set) var auth: Auth?
@@ -28,31 +28,18 @@ class ViewController: UIViewController {
         //             catch {}
         //        }
         
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        
-        
-      
-        
-        //        let authUI = FUIAuth.defaultAuthUI()
-        //        authUI?.delegate = self
-        //        let providers : [FUIAuthProvider] = [FUIEmailAuth(), FUIGoogleAuth()]
-        //        self.authUI?.providers = providers
-        //
-        //        // Show FirebaseUI Authentication if User is not currently signed in
-        //        if Auth.auth().currentUser == nil {
-        //            if let authVC = authUI?.authViewController() {
-        //                present(authVC, animated: true, completion: nil)
-        //            }
-        //        } else {
-        //            do {
-        //                try Auth.auth().signOut()
-        //                self.btnLogIn.setTitle("Log In", for: .normal)
-        //            }
-        //            catch {}
-        //        }
+       
+//        // Show homepage if User is currently signed in
+//        if Auth.auth().currentUser != nil {
+//            print("Current User: ")
+//            print(Auth.auth().currentUser)
+//            performSegue(withIdentifier: "goHome", sender: self)
+//        } else {
+//            print("Current User: ")
+//            print(Auth.auth().currentUser)
+//        }
     }
-    
+
    
     
     //    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
@@ -99,7 +86,7 @@ class ViewController: UIViewController {
     
 }
     
-extension ViewController: FUIAuthDelegate {
+extension SplashViewController: FUIAuthDelegate {
     // Implement the required protocol method for FIRAuthUIDelegate
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
