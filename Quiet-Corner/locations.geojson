@@ -1,0 +1,39 @@
+{
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "description": "Porthmeor Beach, St Ives",
+                "name": "Tate St Ives",
+                "hours": "Open everyday 10am - 5.20pm",
+                "phone": "01736 796226"
+            },
+            "geometry": {
+                "coordinates": [
+                    -5.482472,
+                    50.214941
+                ],
+                "type": "Point"
+            },
+            "id": "address.10164434706493830"
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "description": "Godrevy Towans, Gwithian, Hayle",
+                "name": "Godrevy Beach Café",
+                "hours": "Open everyday 10am - 5pm",
+                "phone": "01736 757999"
+            },
+            "geometry": {
+                "coordinates": [
+                    -5.388074,
+                    50.230633
+                ],
+                "type": "Point"
+            },
+            "id": "address.11842842831717040"
+        }
+    ],
+    "type": "FeatureCollection"
+}
