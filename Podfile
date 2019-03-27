@@ -10,6 +10,8 @@ target 'Quiet-Corner' do
   pod 'Firebase/Core'
   pod 'FirebaseUI'
   pod 'FirebaseAuth'
+  pod 'Mapbox-iOS-SDK', '~> 4.0'
+  pod 'MapboxDirections.swift', '0.20.0'
 
 end
 
