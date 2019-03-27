@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Mapbox
+import MapboxDirections
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, MGLMapViewDelegate, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
