@@ -17,6 +17,7 @@
 		0C85888B224BE6470016A584 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C85888A224BE6470016A584 /* Themes.swift */; };
 		0C85888D224BE6F10016A584 /* locations.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 0C85888C224BE6F10016A584 /* locations.geojson */; };
 		0C85888F224BEB310016A584 /* CustomItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C85888E224BEB310016A584 /* CustomItemView.xib */; };
+		0CCF3D16225518ED00D8887F /* UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCF3D15225518ED00D8887F /* UITableViewController.swift */; };
 		3D72F960A107D3943A75B7CD /* Pods_Quiet_Corner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A18F8BEBA34C7182510C72 /* Pods_Quiet_Corner.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		0C85888A224BE6470016A584 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		0C85888C224BE6F10016A584 /* locations.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = locations.geojson; sourceTree = "<group>"; };
 		0C85888E224BEB310016A584 /* CustomItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomItemView.xib; sourceTree = "<group>"; };
+		0CCF3D15225518ED00D8887F /* UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewController.swift; sourceTree = "<group>"; };
 		3E1E7AA9570D32C0B68A67F4 /* Pods-Quiet-Corner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quiet-Corner.debug.xcconfig"; path = "Target Support Files/Pods-Quiet-Corner/Pods-Quiet-Corner.debug.xcconfig"; sourceTree = "<group>"; };
 		67A18F8BEBA34C7182510C72 /* Pods_Quiet_Corner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quiet_Corner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8499739CA1D5E2491B46D8B /* Pods-Quiet-Corner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quiet-Corner.release.xcconfig"; path = "Target Support Files/Pods-Quiet-Corner/Pods-Quiet-Corner.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				0C3209ED2219F58100C1CFEA /* AppDelegate.swift */,
 				0C3209EF2219F58100C1CFEA /* SplashViewController.swift */,
+				0CCF3D15225518ED00D8887F /* UITableViewController.swift */,
 				0C858888224BDFF30016A584 /* HomeViewController.swift */,
 				0C85888E224BEB310016A584 /* CustomItemView.xib */,
 				0C3209F12219F58100C1CFEA /* Main.storyboard */,
@@ -301,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CCF3D16225518ED00D8887F /* UITableViewController.swift in Sources */,
 				0C3209F02219F58100C1CFEA /* SplashViewController.swift in Sources */,
 				0C85888B224BE6470016A584 /* Themes.swift in Sources */,
 				0C3209EE2219F58100C1CFEA /* AppDelegate.swift in Sources */,
