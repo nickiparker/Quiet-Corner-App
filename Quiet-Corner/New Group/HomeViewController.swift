@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  Quiet-Corner
 //
-//  Created by JODIE PARKER on 27/03/2019.
+//  Created by NICKI PARKER on 27/03/2019.
 //  Copyright © 2019 Nickiparker. All rights reserved.
 //
 
