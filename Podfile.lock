@@ -190,6 +190,7 @@ PODS:
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
+  - Firebase/Firestore
   - FirebaseAuth
   - FirebaseUI
   - Mapbox-iOS-SDK (~> 4.0)
@@ -260,6 +261,6 @@ SPEC CHECKSUMS:
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: 159c6118edce02ea6a072b064744d7c61468322b
+PODFILE CHECKSUM: d22ec07c6d898b14ab35d162902ba8a9cb26e499
 
 COCOAPODS: 1.6.0

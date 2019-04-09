@@ -20,8 +20,9 @@
 		0CCF3D16225518ED00D8887F /* UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCF3D15225518ED00D8887F /* UITableViewController.swift */; };
 		0CCF3D19225BBE8200D8887F /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCF3D17225BBE8200D8887F /* HomeTableViewController.swift */; };
 		0CCF3D1A225BBE8200D8887F /* HomeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CCF3D18225BBE8200D8887F /* HomeTableViewController.xib */; };
-		0CE0AF95225BCF0000B961C6 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE0AF93225BCF0000B961C6 /* Locations.swift */; };
 		0CE0AF96225BCF0000B961C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE0AF94225BCF0000B961C6 /* User.swift */; };
+		0CE0AF9A225CEA0200B961C6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE0AF99225CEA0200B961C6 /* Location.swift */; };
+		0CE0AF9E225D06EC00B961C6 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE0AF9D225D06EC00B961C6 /* LocationTableViewCell.swift */; };
 		3D72F960A107D3943A75B7CD /* Pods_Quiet_Corner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A18F8BEBA34C7182510C72 /* Pods_Quiet_Corner.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,8 +42,9 @@
 		0CCF3D15225518ED00D8887F /* UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewController.swift; sourceTree = "<group>"; };
 		0CCF3D17225BBE8200D8887F /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		0CCF3D18225BBE8200D8887F /* HomeTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewController.xib; sourceTree = "<group>"; };
-		0CE0AF93225BCF0000B961C6 /* Locations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		0CE0AF94225BCF0000B961C6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0CE0AF99225CEA0200B961C6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		0CE0AF9D225D06EC00B961C6 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		3E1E7AA9570D32C0B68A67F4 /* Pods-Quiet-Corner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quiet-Corner.debug.xcconfig"; path = "Target Support Files/Pods-Quiet-Corner/Pods-Quiet-Corner.debug.xcconfig"; sourceTree = "<group>"; };
 		67A18F8BEBA34C7182510C72 /* Pods_Quiet_Corner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quiet_Corner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8499739CA1D5E2491B46D8B /* Pods-Quiet-Corner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quiet-Corner.release.xcconfig"; path = "Target Support Files/Pods-Quiet-Corner/Pods-Quiet-Corner.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				0CCF3D15225518ED00D8887F /* UITableViewController.swift */,
 				0C858888224BDFF30016A584 /* HomeViewController.swift */,
 				0C85888E224BEB310016A584 /* CustomItemView.xib */,
+				0CE0AF9D225D06EC00B961C6 /* LocationTableViewCell.swift */,
 			);
 			name = ViewControllers;
 			path = "New Group";
@@ -128,7 +131,7 @@
 		0CE0AF92225BCF0000B961C6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0CE0AF93225BCF0000B961C6 /* Locations.swift */,
+				0CE0AF99225CEA0200B961C6 /* Location.swift */,
 				0CE0AF94225BCF0000B961C6 /* User.swift */,
 			);
 			path = Models;
@@ -344,12 +347,13 @@
 			files = (
 				0CCF3D19225BBE8200D8887F /* HomeTableViewController.swift in Sources */,
 				0CCF3D16225518ED00D8887F /* UITableViewController.swift in Sources */,
+				0CE0AF9A225CEA0200B961C6 /* Location.swift in Sources */,
 				0C3209F02219F58100C1CFEA /* SplashViewController.swift in Sources */,
 				0C85888B224BE6470016A584 /* Themes.swift in Sources */,
 				0CE0AF96225BCF0000B961C6 /* User.swift in Sources */,
 				0C3209EE2219F58100C1CFEA /* AppDelegate.swift in Sources */,
+				0CE0AF9E225D06EC00B961C6 /* LocationTableViewCell.swift in Sources */,
 				0C858889224BDFF30016A584 /* HomeViewController.swift in Sources */,
-				0CE0AF95225BCF0000B961C6 /* Locations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

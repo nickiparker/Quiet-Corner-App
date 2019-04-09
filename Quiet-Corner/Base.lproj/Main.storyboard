@@ -418,40 +418,54 @@
         <scene sceneID="9xA-qT-Dyt">
             <objects>
                 <tableViewController id="lmY-gJ-mxj" customClass="HomeTableViewController" customModule="Quiet_Corner" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g45-IA-ZX0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g45-IA-ZX0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <sections>
-                            <tableViewSection id="H3J-eV-xXY">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oTT-Zy-LQd">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oTT-Zy-LQd" id="vPX-YL-6Fq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fE0-Cd-40O">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fE0-Cd-40O" id="WZZ-PE-LhW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="PYZ-yS-6O3">
-                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PYZ-yS-6O3" id="gDy-zn-531">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" rowHeight="87" id="oTT-Zy-LQd" userLabel="ItemCell" customClass="LocationTableViewCell" customModule="Quiet_Corner" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="87"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oTT-Zy-LQd" id="vPX-YL-6Fq">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="86.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="locationLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5Y-7b-pa2">
+                                            <rect key="frame" x="27" y="11" width="332" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="332" id="MZG-eq-ogy"/>
+                                                <constraint firstAttribute="height" constant="21" id="vTD-DJ-f0i"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="descriptionLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QR-Z6-wQR">
+                                            <rect key="frame" x="27" y="49" width="332" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="332" id="VwA-ol-F9O"/>
+                                                <constraint firstAttribute="height" constant="21" id="smm-Ql-RGy"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="6QR-Z6-wQR" secondAttribute="bottom" constant="6" id="0l2-K1-wBg"/>
+                                        <constraint firstItem="6QR-Z6-wQR" firstAttribute="top" secondItem="L5Y-7b-pa2" secondAttribute="bottom" constant="17" id="S1r-fX-z7b"/>
+                                        <constraint firstItem="L5Y-7b-pa2" firstAttribute="top" secondItem="vPX-YL-6Fq" secondAttribute="topMargin" id="Zr4-Hb-nmU"/>
+                                        <constraint firstItem="L5Y-7b-pa2" firstAttribute="leading" secondItem="vPX-YL-6Fq" secondAttribute="leadingMargin" constant="11" id="maQ-PC-X4L"/>
+                                        <constraint firstItem="6QR-Z6-wQR" firstAttribute="leading" secondItem="L5Y-7b-pa2" secondAttribute="leading" id="sh9-YA-sP9"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="6QR-Z6-wQR" id="94t-Qb-Lxk"/>
+                                    <outlet property="locationLabel" destination="L5Y-7b-pa2" id="Mp2-vk-LfV"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="lmY-gJ-mxj" id="1yV-bF-zlJ"/>
                             <outlet property="delegate" destination="lmY-gJ-mxj" id="I1E-tf-T7E"/>
@@ -470,7 +484,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uR3-yc-kd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1607" y="-107"/>
+            <point key="canvasLocation" x="1605.5999999999999" y="-107.49625187406298"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yc0-aJ-7yt">
@@ -568,6 +582,6 @@
         <image name="filter-icon-1x" width="32" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="q2U-7u-Gob"/>
+        <segue reference="dpc-kW-YyS"/>
     </inferredMetricsTieBreakers>
 </document>
