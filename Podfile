@@ -8,6 +8,7 @@ target 'Quiet-Corner' do
   # Pods for Quiet-Corner
 
   pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
   pod 'FirebaseUI'
   pod 'FirebaseAuth'
   pod 'Mapbox-iOS-SDK', '~> 4.0'

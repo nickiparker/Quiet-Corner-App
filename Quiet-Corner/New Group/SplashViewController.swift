@@ -96,7 +96,7 @@ extension SplashViewController: FUIAuthDelegate {
             return
         }
         
-        performSegue(withIdentifier: "goHome", sender: self)
+        performSegue(withIdentifier: "toHomeTableView", sender: self)
     }
     
 }

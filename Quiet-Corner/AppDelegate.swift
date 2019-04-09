@@ -9,19 +9,34 @@
 import UIKit
 import Firebase
 //import FirebaseAuth
-//import FirebaseUI
+import FirebaseUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    
+    // ***** added for tutorial
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // FirebaseUI initialisation
         FirebaseApp.configure()
-        // Override point for customization after application launch.
+        let authUI = FUIAuth.defaultAuthUI()
+        
+        // Need to adopt a FUIAuthDelegate protocol to receive callback
+        authUI?.delegate = self as? FUIAuthDelegate
+        
+        // Allows database to work offline
+        Database.database().isPersistenceEnabled = true
         return true
     }
+    
+// ***** commented out and replaced with above function
+//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        FirebaseApp.configure()
+//        // Override point for customization after application launch.
+//        return true
+//    }
     
 //    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
 //        let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String?
