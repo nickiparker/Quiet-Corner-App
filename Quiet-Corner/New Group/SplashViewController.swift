@@ -14,46 +14,33 @@ import FirebaseUI
 class SplashViewController: UIViewController {
    // @IBOutlet weak var doBtnLogIn: UIButton!
     
-//    fileprivate(set) var auth: Auth?
-//    fileprivate(set) var authUI: FUIAuth?
-//    fileprivate(set) var authStateListenerHandle: AuthStateDidChangeListenerHandle?
+    fileprivate(set) var auth: Auth?
+    fileprivate(set) var authUI: FUIAuth?
+    fileprivate(set) var authStateListenerHandle: AuthStateDidChangeListenerHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Re-trigger auth (for testing)
-        //        do {
-        //            try Auth.auth().signOut()
-        //            }
-        //             catch {}
-        //        }
-        
-       
-//        // Show homepage if User is currently signed in
-//        if Auth.auth().currentUser != nil {
-//            print("Current User: ")
-//            print(Auth.auth().currentUser)
-//            performSegue(withIdentifier: "goHome", sender: self)
-//        } else {
-//            print("Current User: ")
-//            print(Auth.auth().currentUser)
-//        }
+
+        // Use to display the UserDefaults - debugging
+        //  for (key, value) in  UserDefaults.standard.dictionaryRepresentation() {
+        //            print("\(key) = \(value) \n")
+        //  }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if isLoggedIn() {
+            // assume user is logged in
+            print("Hello")
+            performSegue(withIdentifier: "toHomeTableView", sender: self)
+        } else {
+            // nothing
+        }
+    }
+    
+    fileprivate func isLoggedIn() -> Bool {
+        return UserDefaults.standard.bool(forKey: "isLoggedIn")
     }
 
-   
-    
-    //    func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
-    //        if error == nil {
-    //            btnLogIn.setTitle("Logout", for: .normal)
-    //        }
-    //    }
-    //    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-    //        if error == nil {
-    //            btnLogIn.setTitle("Log Out", for: .normal)
-    //        }
-    //    }
-    
-    
     @IBAction func doBtnLogIn(_ sender: Any) {
         
         // Get the default auth UI object
@@ -72,14 +59,6 @@ class SplashViewController: UIViewController {
         // Get a reference to the auth UI view controller
         let authVC = authUI?.authViewController()
         
-        
-//        self.authStateListenerHandle = self.auth?.addStateDidChangeListener{ (auth, user) in
-//            guard user != nil else{
-//                self.loginAction(sender: self)
-//                return
-//            }
-//        }
-//
         // Show it
         self.present(authVC!, animated: true, completion: nil)
     }
@@ -96,21 +75,10 @@ extension SplashViewController: FUIAuthDelegate {
             return
         }
         
+        UserDefaults.standard.set(true, forKey: "isLoggedIn")
+        UserDefaults.standard.synchronize()
+        
         performSegue(withIdentifier: "toHomeTableView", sender: self)
     }
     
 }
-    
-//   Currently Redundant (Changed log in function)
-//    @IBAction func doBtnLogOut(_ sender: Any) {
-//        print(self.auth?.currentUser);
-//        if self.auth?.currentUser != nil {
-//            do {
-//                try self.auth?.signOut()
-//                doBtnLogOut.isHidden = true
-//            }
-//            catch {}
-//        }
-//    }
-    
-
