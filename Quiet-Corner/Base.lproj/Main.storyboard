@@ -610,7 +610,7 @@
         <scene sceneID="wOf-6i-N9I">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NeR-ep-UQP" userLabel="Map Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map View" image="google.png" id="Y6F-ZQ-mqb"/>
+                    <tabBarItem key="tabBarItem" title="Map View" image="map-icon-30x30" id="Y6F-ZQ-mqb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8by-cL-RoW">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -629,7 +629,7 @@
         <scene sceneID="l8P-0u-5fz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hch-mw-wlj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List View" image="filter-icon-1x" id="Ejj-6C-tBZ"/>
+                    <tabBarItem key="tabBarItem" title="List View" image="list-view-icon-30x30" id="Ejj-6C-tBZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uNJ-50-Z5H">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -648,7 +648,7 @@
         <scene sceneID="Uke-MB-ZIz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gAp-F6-8Vi" userLabel="Profile View" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="ic_anonymous.png" id="bFU-SM-uVw"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile-icon-30x30" id="bFU-SM-uVw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OhK-x1-Z7Y">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -665,9 +665,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="filter-icon-1x" width="32" height="28"/>
-        <image name="google.png" width="18" height="18"/>
-        <image name="ic_anonymous.png" width="24" height="24"/>
+        <image name="list-view-icon-30x30" width="24" height="24"/>
+        <image name="map-icon-30x30" width="24" height="24"/>
+        <image name="profile-icon-30x30" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="q2U-7u-Gob"/>
