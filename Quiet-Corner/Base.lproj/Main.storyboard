@@ -406,9 +406,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="NeR-ep-UQP" kind="showDetail" identifier="goToMapSegue" id="XHh-pj-eVp"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHH-gY-EYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -506,7 +503,7 @@
             </objects>
             <point key="canvasLocation" x="2529" y="-107"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Closest to you-->
         <scene sceneID="7en-xf-brQ">
             <objects>
                 <viewController id="hws-Am-cF4" customClass="HomeViewController" customModule="Quiet_Corner" customModuleProvider="target" sceneMemberID="viewController">
@@ -528,9 +525,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cLk-kY-Nkc"/>
                     </view>
-                    <navigationItem key="navigationItem" id="lNS-Qq-0D0">
-                        <barButtonItem key="rightBarButtonItem" image="filter-icon-1x" id="H56-yU-oN5">
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <navigationItem key="navigationItem" title="Closest to you" id="lNS-Qq-0D0">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" style="plain" id="H56-yU-oN5">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="HNH-Ua-YQ7" kind="show" identifier="goFilterPageButton" id="q2U-7u-Gob"/>
                             </connections>
@@ -552,17 +549,18 @@
                     </tabBar>
                     <connections>
                         <segue destination="Hch-mw-wlj" kind="relationship" relationship="viewControllers" id="hL1-PA-g2W"/>
+                        <segue destination="NeR-ep-UQP" kind="relationship" relationship="viewControllers" id="s96-gA-VTg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="02j-Bt-iyy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18" y="645"/>
         </scene>
-        <!--Item-->
+        <!--Map View-->
         <scene sceneID="wOf-6i-N9I">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NeR-ep-UQP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Y6F-ZQ-mqb"/>
+                    <tabBarItem key="tabBarItem" title="Map View" image="google.png" id="Y6F-ZQ-mqb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8by-cL-RoW">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -599,8 +597,9 @@
     </scenes>
     <resources>
         <image name="filter-icon-1x" width="32" height="28"/>
+        <image name="google.png" width="18" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dpc-kW-YyS"/>
+        <segue reference="q2U-7u-Gob"/>
     </inferredMetricsTieBreakers>
 </document>
