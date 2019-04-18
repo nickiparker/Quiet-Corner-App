@@ -30,7 +30,6 @@ class SplashViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if isLoggedIn() {
             // assume user is logged in
-            print("Hello")
             performSegue(withIdentifier: "toHomeTableView", sender: self)
         } else {
             // nothing
@@ -62,6 +61,8 @@ class SplashViewController: UIViewController {
         // Show it
         self.present(authVC!, animated: true, completion: nil)
     }
+    
+    @IBAction func unwindToSplashView(segue:UIStoryboardSegue) { }
     
 }
     
