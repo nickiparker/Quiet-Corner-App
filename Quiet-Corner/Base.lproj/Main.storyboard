@@ -188,6 +188,39 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="45" id="NSG-AP-jJA">
+                                        <rect key="frame" x="0.0" y="283" width="375" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NSG-AP-jJA" id="DMq-cp-Hgb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cafe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g69-Nk-X7o">
+                                                    <rect key="frame" x="16" y="11" width="213.5" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="g69-Nk-X7o" secondAttribute="height" multiplier="65:7" id="Zdx-tY-Byn"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OTI-UL-hjs">
+                                                    <rect key="frame" x="308.5" y="6" width="50.5" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="OTI-UL-hjs" secondAttribute="height" multiplier="47:31" id="adc-v9-5C6"/>
+                                                    </constraints>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="g69-Nk-X7o" firstAttribute="leading" secondItem="DMq-cp-Hgb" secondAttribute="leadingMargin" id="40k-FU-vIL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="g69-Nk-X7o" secondAttribute="bottom" id="C7q-7F-Gcr"/>
+                                                <constraint firstAttribute="bottom" secondItem="OTI-UL-hjs" secondAttribute="bottom" constant="6.5" id="CHg-ea-iMQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="OTI-UL-hjs" secondAttribute="trailing" constant="18" id="VbU-Mv-WML"/>
+                                                <constraint firstItem="OTI-UL-hjs" firstAttribute="top" secondItem="DMq-cp-Hgb" secondAttribute="top" constant="6" id="dKy-JS-NRc"/>
+                                                <constraint firstItem="g69-Nk-X7o" firstAttribute="top" secondItem="DMq-cp-Hgb" secondAttribute="topMargin" id="qag-zo-Cq9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
