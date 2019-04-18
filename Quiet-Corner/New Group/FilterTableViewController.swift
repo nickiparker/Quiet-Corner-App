@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseUI
 
-class ViewController: UITableViewController {
+class FilterTableViewController: UITableViewController {
 
     @IBAction func goToMapButtonPressed(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "goToMapSegue", sender: self)
