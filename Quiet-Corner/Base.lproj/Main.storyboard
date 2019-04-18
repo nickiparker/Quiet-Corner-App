@@ -68,6 +68,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="1vV-wG-n5C" secondAttribute="height" multiplier="47:31" id="G3Q-js-piY"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="beachSwitch:" destination="HNH-Ua-YQ7" eventType="valueChanged" id="OtG-nt-qwA"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beach" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W47-4Z-kSD">
                                                     <rect key="frame" x="16" y="11" width="190" height="22"/>
@@ -110,6 +113,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="HI4-AV-uin" secondAttribute="height" multiplier="47:31" id="6eR-Zt-RrC"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="historicalSwitch:" destination="HNH-Ua-YQ7" eventType="valueChanged" id="nRL-Xh-6hu"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -129,7 +135,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Art &amp; Culture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kU8-ma-4fV">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gardens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kU8-ma-4fV">
                                                     <rect key="frame" x="16" y="11" width="208.5" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="kU8-ma-4fV" secondAttribute="height" multiplier="199:21" id="G4b-Kh-rGG"/>
@@ -143,6 +149,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="YIh-dk-H2F" secondAttribute="height" multiplier="47:31" id="nG4-1v-Mb6"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="gardensSwitch:" destination="HNH-Ua-YQ7" eventType="valueChanged" id="f88-Uq-aEU"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -176,6 +185,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="vU5-Bu-YyU" secondAttribute="height" multiplier="47:31" id="ivI-ME-OVd"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="trailsSwitch:" destination="HNH-Ua-YQ7" eventType="valueChanged" id="YOd-Ka-el4"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -209,6 +221,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="OTI-UL-hjs" secondAttribute="height" multiplier="47:31" id="adc-v9-5C6"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="cafeSwitch:" destination="HNH-Ua-YQ7" eventType="valueChanged" id="y8p-si-P0v"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
