@@ -541,58 +541,49 @@
         <!--Profile View Controller-->
         <scene sceneID="eW8-HD-l4J">
             <objects>
-                <viewController id="HJW-hq-46G" userLabel="Profile View Controller" sceneMemberID="viewController">
+                <viewController id="HJW-hq-46G" userLabel="Profile View Controller" customClass="ProfileViewController" customModule="Quiet_Corner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fmT-M7-2vo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5l-H2-RXr">
-                                <rect key="frame" x="16" y="118" width="75" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="paH-Mc-qh6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAy-rc-8lE">
-                                <rect key="frame" x="16" y="147" width="75" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joe Blogs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39G-yC-ZL5">
-                                <rect key="frame" x="99" y="118" width="239" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jo.blogs@address.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJS-GM-RIM">
-                                <rect key="frame" x="99" y="147" width="239" height="21"/>
+                                <rect key="frame" x="138" y="195" width="174" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCr-aw-VSl">
+                                <rect key="frame" x="160" y="380" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="logOut:" destination="HJW-hq-46G" eventType="touchUpInside" id="pHG-Vf-fWy"/>
+                                    <segue destination="RrR-AA-Khg" kind="unwind" identifier="unwindToSplashView" unwindAction="unwindToSplashViewWithSegue:" id="byh-0p-trQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAy-rc-8lE">
+                                <rect key="frame" x="47" y="194" width="60" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="L5l-H2-RXr" firstAttribute="top" secondItem="p3k-8r-VUR" secondAttribute="top" constant="54" id="4HM-tQ-NXx"/>
-                            <constraint firstItem="L5l-H2-RXr" firstAttribute="leading" secondItem="yAy-rc-8lE" secondAttribute="leading" id="6Fz-59-9SZ"/>
-                            <constraint firstItem="yAy-rc-8lE" firstAttribute="top" secondItem="L5l-H2-RXr" secondAttribute="bottom" constant="8" symbolic="YES" id="B7b-xz-gVa"/>
-                            <constraint firstItem="L5l-H2-RXr" firstAttribute="leading" secondItem="fmT-M7-2vo" secondAttribute="leadingMargin" id="aK6-zh-XKy"/>
-                            <constraint firstItem="p3k-8r-VUR" firstAttribute="trailing" secondItem="39G-yC-ZL5" secondAttribute="trailing" constant="37" id="lyQ-7f-J7S"/>
-                            <constraint firstItem="yAy-rc-8lE" firstAttribute="baseline" secondItem="bJS-GM-RIM" secondAttribute="baseline" id="pzJ-M9-zsS"/>
-                            <constraint firstItem="39G-yC-ZL5" firstAttribute="trailing" secondItem="bJS-GM-RIM" secondAttribute="trailing" id="sBp-hU-fEf"/>
-                            <constraint firstItem="39G-yC-ZL5" firstAttribute="leading" secondItem="L5l-H2-RXr" secondAttribute="trailing" constant="8" symbolic="YES" id="vH2-Hd-hFl"/>
-                            <constraint firstItem="39G-yC-ZL5" firstAttribute="leading" secondItem="bJS-GM-RIM" secondAttribute="leading" id="y28-Fh-0gF"/>
-                            <constraint firstItem="bJS-GM-RIM" firstAttribute="leading" secondItem="yAy-rc-8lE" secondAttribute="trailing" constant="8" symbolic="YES" id="zFg-N1-Vly"/>
-                            <constraint firstItem="L5l-H2-RXr" firstAttribute="baseline" secondItem="39G-yC-ZL5" secondAttribute="baseline" id="zad-F9-9iU"/>
+                            <constraint firstItem="yAy-rc-8lE" firstAttribute="top" secondItem="p3k-8r-VUR" secondAttribute="top" constant="130" id="2Tb-iu-gRD"/>
+                            <constraint firstItem="bJS-GM-RIM" firstAttribute="leading" secondItem="yAy-rc-8lE" secondAttribute="trailing" constant="31" id="RdH-Xv-3rJ"/>
+                            <constraint firstItem="yAy-rc-8lE" firstAttribute="baseline" secondItem="bJS-GM-RIM" secondAttribute="baseline" constant="-1" id="enr-j3-UkY"/>
+                            <constraint firstItem="yAy-rc-8lE" firstAttribute="leading" secondItem="p3k-8r-VUR" secondAttribute="leading" constant="47" id="qlR-Gj-JOS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="p3k-8r-VUR"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="XjO-h9-p3V"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="bJS-GM-RIM" id="c7V-DI-auH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWm-9t-YfW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="RrR-AA-Khg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1768.8" y="1774.3628185907048"/>
         </scene>
