@@ -22,14 +22,4 @@ struct Filters {
         self.trails = dictionary["trails"] as? Bool ?? false
         self.cafe = dictionary["cafe"] as? Bool ?? false
     }
-//
-//    var dictionary: [String: Any] {
-//        return[
-//            "beach": false,
-//            "historical": false,
-//            "gardens": false,
-//            "trails": false,
-//            "cafe": false
-//        ]
-//    }
 }

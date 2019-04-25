@@ -41,7 +41,7 @@
         <!--Filter View Controller-->
         <scene sceneID="V3D-eg-ytw">
             <objects>
-                <tableViewController storyboardIdentifier="UITableViewController" id="HNH-Ua-YQ7" userLabel="Filter View Controller" customClass="FilterTableViewController" customModule="Quiet_Corner" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="HNH-Ua-YQ7" userLabel="Filter View Controller" customClass="FilterTableViewController" customModule="Quiet_Corner" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bmr-hm-4HG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,9 +68,6 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="1vV-wG-n5C" secondAttribute="height" multiplier="47:31" id="G3Q-js-piY"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <action selector="beachSwitch:" destination="HNH-Ua-YQ7" eventType="valueChanged" id="OtG-nt-qwA"/>
-                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beach" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W47-4Z-kSD">
                                                     <rect key="frame" x="16" y="11" width="190" height="22"/>
@@ -113,9 +110,6 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="HI4-AV-uin" secondAttribute="height" multiplier="47:31" id="6eR-Zt-RrC"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <action selector="historicalSwitch:" destination="HNH-Ua-YQ7" eventType="valueChanged" id="nRL-Xh-6hu"/>
-                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -149,9 +143,6 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="YIh-dk-H2F" secondAttribute="height" multiplier="47:31" id="nG4-1v-Mb6"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <action selector="gardensSwitch:" destination="HNH-Ua-YQ7" eventType="valueChanged" id="f88-Uq-aEU"/>
-                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -185,9 +176,6 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="vU5-Bu-YyU" secondAttribute="height" multiplier="47:31" id="ivI-ME-OVd"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <action selector="trailsSwitch:" destination="HNH-Ua-YQ7" eventType="valueChanged" id="YOd-Ka-el4"/>
-                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -221,9 +209,6 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="OTI-UL-hjs" secondAttribute="height" multiplier="47:31" id="adc-v9-5C6"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <action selector="cafeSwitch:" destination="HNH-Ua-YQ7" eventType="valueChanged" id="y8p-si-P0v"/>
-                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -248,14 +233,21 @@
                         <barButtonItem key="rightBarButtonItem" title="Apply" id="H6h-Rm-Q0R">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="goToMapButtonPressed:" destination="HNH-Ua-YQ7" id="z3I-lz-VlZ"/>
+                                <action selector="applyFilters:" destination="HNH-Ua-YQ7" id="VRt-cT-eco"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="beachSwitch" destination="1vV-wG-n5C" id="Seb-mm-C15"/>
+                        <outlet property="cafeSwitch" destination="OTI-UL-hjs" id="8Gr-P9-X56"/>
+                        <outlet property="gardensSwitch" destination="YIh-dk-H2F" id="Tud-go-TIF"/>
+                        <outlet property="historicalSwitch" destination="HI4-AV-uin" id="INU-z3-sNz"/>
+                        <outlet property="trailsSwitch" destination="vU5-Bu-YyU" id="zZk-6f-3ni"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHH-gY-EYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2741.5999999999999" y="605.84707646176912"/>
+            <point key="canvasLocation" x="1769" y="2454"/>
         </scene>
         <!--List View-->
         <scene sceneID="9xA-qT-Dyt">
@@ -318,8 +310,7 @@
                     <navigationItem key="navigationItem" title="Closest to you" id="dIH-ge-pre">
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="jok-Zf-yAL">
                             <connections>
-                                <action selector="toFilterListButton:" destination="lmY-gJ-mxj" id="UPo-0h-A41"/>
-                                <segue destination="HNH-Ua-YQ7" kind="show" id="dpc-kW-YyS"/>
+                                <action selector="didTapFilterButton:" destination="lmY-gJ-mxj" id="KAb-5g-JKg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -354,9 +345,6 @@
                     <navigationItem key="navigationItem" title="Closest to you" id="lNS-Qq-0D0">
                         <barButtonItem key="rightBarButtonItem" title="Filter" style="plain" id="H56-yU-oN5">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="HNH-Ua-YQ7" kind="show" identifier="goFilterPageButton" id="q2U-7u-Gob"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -489,13 +477,28 @@
             </objects>
             <point key="canvasLocation" x="833" y="1775"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vo0-Mx-AA7">
+            <objects>
+                <navigationController storyboardIdentifier="FilterTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="P7F-2w-mxh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XFS-6s-hSP">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HNH-Ua-YQ7" kind="relationship" relationship="rootViewController" id="Qsi-M0-xzB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5g5-Bu-Arx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="833" y="2454"/>
+        </scene>
     </scenes>
     <resources>
         <image name="list-view-icon-30x30" width="24" height="24"/>
         <image name="map-icon-30x30" width="24" height="24"/>
         <image name="profile-icon-30x30" width="24" height="24"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="dpc-kW-YyS"/>
-    </inferredMetricsTieBreakers>
 </document>

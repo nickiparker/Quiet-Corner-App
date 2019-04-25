@@ -15,13 +15,9 @@ class HomeTableViewController: UITableViewController {
     let db = Firestore.firestore()
     private var documents: [DocumentSnapshot] = []
     public var locations: [Location] = []
-    private var listener : ListenerRegistration!
-    
-   // Future implementation for user specific functionality
-   // var user: User!
-   // var userCountBarButtonItem: UIBarButtonItem!
 
-    @IBAction func toFilterListButton(_ sender: UIBarButtonItem) {
+    @IBAction func didTapFilterButton(_ sender: UIBarButtonItem) {
+        present(filter.navigationController, animated: true, completion: nil)
     }
  
     // Firebase global setter to constrain firebase query to max 50
@@ -33,42 +29,66 @@ class HomeTableViewController: UITableViewController {
         didSet {
             if let listener = listener {
                 listener.remove()
+                observeQuery()
             }
+        }
+    }
+    
+    lazy private var filter: (navigationController: UINavigationController,
+        filterController: FilterTableViewController) = {
+            return FilterTableViewController.fromStoryboard(delegate: self)
+    }()
+    
+    fileprivate func stopObserving() {
+        listener?.remove()
+    }
+    
+    private var listener: ListenerRegistration?
+    
+    fileprivate func observeQuery() {
+        guard let query = query else { return }
+        stopObserving()
+        
+        listener = query.addSnapshotListener { [unowned self] (documents, error) in
+            guard let snapshot = documents else {
+                print("Error fetching snapshot results: \(error!)")
+                return
+            }
+            let models = snapshot.documents.map { (document) -> Location in
+                if let model = Location(dictionary: document.data(), id: document.documentID) {
+                    return model
+                } else {
+                    // Don't use fatalError here in a real app.
+                    fatalError("Unable to initialize type \(Location.self) with dictionary \(document.data())")
+                }
+            }
+            self.locations = models
+            self.documents = snapshot.documents
+            
+            if self.documents.count > 0 {
+               // TODO
+            } else {
+                // TODO
+            }
+            
+            self.tableView.reloadData()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.query = baseQuery() // firebase db query
+        query = baseQuery()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.listener.remove()
+        stopObserving()
     }
     
      override func viewWillAppear(_ animated: Bool) {
-        self.listener =  query?.addSnapshotListener { (documents, error) in
-            guard let snapshot = documents else {
-                print("Error fetching documents results: \(error!)")
-                return
-            }
-            
-            let results = snapshot.documents.map { (document) -> Location in
-                if let location = Location(dictionary: document.data(), id: document.documentID) {
-                    return location
-                } else {
-                    fatalError("Unable to initialize type \(Location.self) with dictionary \(document.data())")
-                }
-            }
-            
-            print("Locations: \n", results)
-            print("Documents: \n", snapshot.documents)
-            self.locations = results
-            self.documents = snapshot.documents
-            self.tableView.reloadData()
-            
-        }
+        
+        super.viewWillAppear(animated)
+        observeQuery()
     }
     
     // Build out the table of locations
@@ -91,3 +111,50 @@ class HomeTableViewController: UITableViewController {
         return cell
     }
 }
+
+extension HomeTableViewController: FilterTableViewControllerDelegate {
+    
+    func query(beach: Bool?, cafe: Bool?, gardens: Bool?, historical: Bool?, trails: Bool?) -> Query {
+        var filtered = baseQuery()
+        
+        
+        // Applying filtering queries
+        if beach == true {
+            filtered = filtered.whereField("beach", isEqualTo: true)
+        }
+        
+        if cafe == true {
+            filtered = filtered.whereField("cafe", isEqualTo: true)
+        }
+        
+        if gardens == true {
+            filtered = filtered.whereField("gardens", isEqualTo: true)
+        }
+        
+        if historical == true {
+            filtered = filtered.whereField("historical", isEqualTo: true)
+        }
+        
+        if trails == true {
+            filtered = filtered.whereField("trails", isEqualTo: true)
+        }
+        
+        return filtered
+    }
+    
+    func controller(_ controller: FilterTableViewController,
+                    beach: Bool?,
+                    cafe: Bool?,
+                    gardens: Bool?,
+                    historical: Bool?,
+                    trails: Bool?) {
+        let filtered = query(beach: beach, cafe: cafe, gardens: gardens, historical: historical, trails: trails)
+
+        self.query = filtered
+        observeQuery()
+    }
+    
+}
+
+
+

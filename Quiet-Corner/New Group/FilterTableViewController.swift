@@ -13,10 +13,26 @@ import FirebaseUI
 
 class FilterTableViewController: UITableViewController {
     
+    weak var delegate: FilterTableViewControllerDelegate?
+    
+    static func fromStoryboard(delegate: FilterTableViewControllerDelegate? = nil) ->
+        (navigationController: UINavigationController, filterController: FilterTableViewController) {
+            let navController = UIStoryboard(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "FilterTableViewController")
+                as! UINavigationController
+            let controller = navController.viewControllers[0] as! FilterTableViewController
+            controller.delegate = delegate
+            return (navigationController: navController, filterController: controller)
+     }
+    
+    
+    
     var filters = Filters(dictionary: ["String" : Bool.self])
 
-    @IBAction func goToMapButtonPressed(_ sender: UIBarButtonItem) {
-        self.performSegue(withIdentifier: "goToMapSegue", sender: self)
+    @IBAction func applyFilters(_ sender: UIBarButtonItem) {
+        delegate?.controller(self, beach: beachSwitch.isOn, cafe: cafeSwitch.isOn,
+                             gardens: gardensSwitch.isOn, historical: historicalSwitch.isOn, trails: trailsSwitch.isOn)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -25,53 +41,20 @@ class FilterTableViewController: UITableViewController {
     }
     
     // Filter toggles
-    @IBAction func beachSwitch(_ sender: UISwitch) {
-        if (sender.isOn) {
-            filters.beach = true
-           print(filters)
-        } else {
-           filters.beach = false
-            print(filters)
-        }
-    }
+    @IBOutlet var beachSwitch: UISwitch!
     
-    @IBAction func historicalSwitch(_ sender: UISwitch) {
-        if (sender.isOn) {
-            filters.historical = true
-            print(filters)
-        } else {
-            filters.historical = false
-            print(filters)
-        }
-    }
+    @IBOutlet var historicalSwitch: UISwitch!
     
-    @IBAction func gardensSwitch(_ sender: UISwitch) {
-        if (sender.isOn) {
-            filters.gardens = true
-            print(filters)
-        } else {
-            filters.gardens = false
-            print(filters)
-        }
-    }
+    @IBOutlet var gardensSwitch: UISwitch!
     
-    @IBAction func trailsSwitch(_ sender: UISwitch) {
-        if (sender.isOn) {
-            filters.trails = true
-            print(filters)
-        } else {
-            filters.trails = false
-            print(filters)
-        }
-    }
+    @IBOutlet var trailsSwitch: UISwitch!
     
-    @IBAction func cafeSwitch(_ sender: UISwitch) {
-        if (sender.isOn) {
-            filters.cafe = true
-            print(filters)
-        } else {
-            filters.cafe = false
-            print(filters)
-        }
-    }
+    @IBOutlet var cafeSwitch: UISwitch!
+}
+
+protocol FilterTableViewControllerDelegate: NSObjectProtocol {
+    
+    func controller(_ controller: FilterTableViewController,
+                    beach: Bool?, cafe: Bool?, gardens: Bool?,
+                    historical: Bool?, trails: Bool?)
 }
