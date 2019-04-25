@@ -43,7 +43,6 @@ class SplashViewController: UIViewController {
     @IBAction func doBtnLogIn(_ sender: Any) {
         
         // Get the default auth UI object
-        //let auth = Auth.auth()
         let authUI = FUIAuth.defaultAuthUI()
         
         guard authUI != nil else {

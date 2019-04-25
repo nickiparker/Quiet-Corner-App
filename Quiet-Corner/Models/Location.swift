@@ -9,36 +9,41 @@
 import Foundation
 
 struct Location {
-//    var attractions: Bool
-//    var beach: Bool
-//    var cafe: Bool
     var description: String
     var location: String
     var id: String
+    var beach: Bool
+    var cafe: Bool
+    var trails: Bool
+    var gardens: Bool
+    var historical: Bool
     
     var dictionary: [String: Any] {
         return[
-//            "attractions": attractions,
-//            "beach": beach,
-//            "cafe": cafe,
             "description": description,
-            "location": location
+            "location": location,
+            "beach": beach,
+            "cafe": cafe,
+            "trails": trails,
+            "gardens": gardens,
+            "historical": historical
         ]
     }
 }
 
 extension Location {
     init?(dictionary: [String : Any], id: String) {
-//        guard let attractions = dictionary["attractions"] as? Bool,
-//        let beach = dictionary["beach"] as? Bool,
-//        let cafe = dictionary["cafe"] as? Bool,
-       guard let description = dictionary["description"] as? String,
-        let location = dictionary["location"] as? String
-            else { return nil }
+        guard let description = dictionary["description"] as? String,
+        let location = dictionary["location"] as? String,
+        let beach = dictionary["beach"] as? Bool,
+        let cafe = dictionary["cafe"] as? Bool,
+        let trails = dictionary["trails"] as? Bool,
+        let gardens = dictionary["gardens"] as? Bool,
+        let historical = dictionary["historical"] as? Bool
+        else { return nil }
         
-        self.init(description: description, location: location, id: id)
+        self.init(description: description, location: location, id: id, beach: beach, cafe: cafe, trails: trails, gardens: gardens, historical: historical)
         
     }
 }
 
-//attractions: attractions, beach: beach, cafe: cafe,
