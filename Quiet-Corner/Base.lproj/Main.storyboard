@@ -315,10 +315,41 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="kp5-C0-fKc" kind="show" identifier="toLocationDetail" id="EVt-La-NK6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uR3-yc-kd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1769" y="257"/>
+        </scene>
+        <!--Location Details View Controller-->
+        <scene sceneID="CAR-eq-Jvu">
+            <objects>
+                <viewController storyboardIdentifier="locationDetailsView" id="kp5-C0-fKc" customClass="LocationDetailsViewController" customModule="Quiet_Corner" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pkm-F6-1aQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGW-qz-SMD">
+                                <rect key="frame" x="166" y="180" width="66" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="locationLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Wcx-OZ-EiB"/>
+                    </view>
+                    <connections>
+                        <outlet property="locationLabel" destination="YGW-qz-SMD" id="byi-8Y-ZuW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E35-7c-5kQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2565.5999999999999" y="255.92203898050977"/>
         </scene>
         <!--Map View-->
         <scene sceneID="7en-xf-brQ">

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C137425227359E200B73D54 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C137424227359E200B73D54 /* LocationDetailsViewController.swift */; };
 		0C3209EE2219F58100C1CFEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3209ED2219F58100C1CFEA /* AppDelegate.swift */; };
 		0C3209F02219F58100C1CFEA /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3209EF2219F58100C1CFEA /* SplashViewController.swift */; };
 		0C3209F32219F58100C1CFEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C3209F12219F58100C1CFEA /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C137424227359E200B73D54 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		0C3209EA2219F58100C1CFEA /* Quiet-Corner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiet-Corner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C3209ED2219F58100C1CFEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C3209EF2219F58100C1CFEA /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				0C85888E224BEB310016A584 /* CustomItemView.xib */,
 				0CE0AF9D225D06EC00B961C6 /* LocationTableViewCell.swift */,
 				0CB038D12268A6D5001D41BD /* ProfileViewController.swift */,
+				0C137424227359E200B73D54 /* LocationDetailsViewController.swift */,
 			);
 			name = ViewControllers;
 			path = "New Group";
@@ -358,6 +361,7 @@
 				0CCF3D16225518ED00D8887F /* FilterTableViewController.swift in Sources */,
 				0CB038D42268B59B001D41BD /* CurrentUser.swift in Sources */,
 				0CB038D22268A6D5001D41BD /* ProfileViewController.swift in Sources */,
+				0C137425227359E200B73D54 /* LocationDetailsViewController.swift in Sources */,
 				0CE0AF9A225CEA0200B961C6 /* Location.swift in Sources */,
 				0C3209F02219F58100C1CFEA /* SplashViewController.swift in Sources */,
 				0C85888B224BE6470016A584 /* Themes.swift in Sources */,

@@ -9,8 +9,10 @@
 import UIKit
 import Firebase
 
-class HomeTableViewController: UITableViewController {
+var location: [Location] = []
 
+class HomeTableViewController: UITableViewController {
+    
     // locations firebase
     let db = Firestore.firestore()
     private var documents: [DocumentSnapshot] = []
@@ -109,6 +111,14 @@ class HomeTableViewController: UITableViewController {
         cell.descriptionLabel!.text = location.description
 
         return cell
+    }
+    
+   override  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //imageURL = imageURL(from: locations[indexPath.row].imageURL)
+        location = [locations[indexPath.row]]
+    
+        performSegue(withIdentifier: "toLocationDetail", sender: self)
     }
 }
 
