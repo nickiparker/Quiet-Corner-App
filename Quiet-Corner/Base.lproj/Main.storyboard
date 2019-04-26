@@ -315,10 +315,88 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="kp5-C0-fKc" kind="show" identifier="toLocationDetail" id="EVt-La-NK6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uR3-yc-kd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1769" y="257"/>
+        </scene>
+        <!--Location Details View Controller-->
+        <scene sceneID="CAR-eq-Jvu">
+            <objects>
+                <viewController storyboardIdentifier="locationDetailsView" id="kp5-C0-fKc" customClass="LocationDetailsViewController" customModule="Quiet_Corner" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pkm-F6-1aQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cj7-Ay-m2J">
+                                <rect key="frame" x="1" y="64" width="375" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="d4b-AM-DTr"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGW-qz-SMD">
+                                <rect key="frame" x="17" y="174" width="343" height="24"/>
+                                <accessibility key="accessibilityConfiguration" identifier="locationLabel"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LocationDescription" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JA-na-C18">
+                                <rect key="frame" x="17" y="266" width="343" height="205"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="205" id="TaC-4q-auL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1S-89-ExB">
+                                <rect key="frame" x="141" y="558" width="93" height="30"/>
+                                <state key="normal" title="GoToLocation"/>
+                                <connections>
+                                    <action selector="goToNavigation:" destination="kp5-C0-fKc" eventType="touchUpInside" id="T9M-CU-QIM"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Her-9x-5QA">
+                                <rect key="frame" x="1" y="410" width="373" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="5Vj-1r-KOi"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YGW-qz-SMD" firstAttribute="trailing" secondItem="pkm-F6-1aQ" secondAttribute="trailingMargin" constant="1" id="7Xx-QI-oBx"/>
+                            <constraint firstItem="j1S-89-ExB" firstAttribute="centerX" secondItem="pkm-F6-1aQ" secondAttribute="centerX" id="8hX-zF-Q79"/>
+                            <constraint firstItem="YGW-qz-SMD" firstAttribute="trailing" secondItem="4JA-na-C18" secondAttribute="trailing" id="AMN-Tg-87n"/>
+                            <constraint firstItem="cj7-Ay-m2J" firstAttribute="leading" secondItem="Wcx-OZ-EiB" secondAttribute="leading" constant="1" id="Cu7-e7-Zi4"/>
+                            <constraint firstItem="j1S-89-ExB" firstAttribute="leading" secondItem="Wcx-OZ-EiB" secondAttribute="leading" constant="141" id="LUu-8Y-5an"/>
+                            <constraint firstItem="4JA-na-C18" firstAttribute="top" secondItem="YGW-qz-SMD" secondAttribute="bottom" constant="68" id="OTF-qg-YmB"/>
+                            <constraint firstItem="Wcx-OZ-EiB" firstAttribute="bottom" secondItem="j1S-89-ExB" secondAttribute="bottom" constant="30" id="ZQy-Nd-pmy"/>
+                            <constraint firstItem="Her-9x-5QA" firstAttribute="centerX" secondItem="j1S-89-ExB" secondAttribute="centerX" id="dGr-Wh-ZYd"/>
+                            <constraint firstItem="YGW-qz-SMD" firstAttribute="top" secondItem="cj7-Ay-m2J" secondAttribute="bottom" constant="-70" id="goZ-2q-OL6"/>
+                            <constraint firstItem="cj7-Ay-m2J" firstAttribute="top" secondItem="Wcx-OZ-EiB" secondAttribute="top" id="hE7-yD-Fub"/>
+                            <constraint firstItem="YGW-qz-SMD" firstAttribute="leading" secondItem="pkm-F6-1aQ" secondAttribute="leadingMargin" constant="1" id="iKk-No-7IU"/>
+                            <constraint firstItem="j1S-89-ExB" firstAttribute="top" secondItem="Her-9x-5QA" secondAttribute="bottom" constant="8" symbolic="YES" id="koP-V6-STa"/>
+                            <constraint firstItem="Her-9x-5QA" firstAttribute="leading" secondItem="cj7-Ay-m2J" secondAttribute="leading" id="u6e-Zh-DMo"/>
+                            <constraint firstItem="YGW-qz-SMD" firstAttribute="leading" secondItem="4JA-na-C18" secondAttribute="leading" id="zel-52-hgp"/>
+                            <constraint firstItem="cj7-Ay-m2J" firstAttribute="centerX" secondItem="YGW-qz-SMD" secondAttribute="centerX" id="zlb-bE-mz7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wcx-OZ-EiB"/>
+                    </view>
+                    <connections>
+                        <outlet property="advertImage" destination="Her-9x-5QA" id="avR-jD-Lg1"/>
+                        <outlet property="locationDescription" destination="4JA-na-C18" id="qO2-Se-rhw"/>
+                        <outlet property="locationImage" destination="cj7-Ay-m2J" id="uSX-7m-auv"/>
+                        <outlet property="locationLabel" destination="YGW-qz-SMD" id="byi-8Y-ZuW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E35-7c-5kQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2565.5999999999999" y="255.92203898050977"/>
         </scene>
         <!--Map View-->
         <scene sceneID="7en-xf-brQ">
