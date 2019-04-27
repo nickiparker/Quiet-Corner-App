@@ -84,8 +84,7 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
     }
     
     @IBAction func goToNavigation(_ sender: Any) {
-        //performSegue(withIdentifier: "toLocationNavigation", sender: self)
-        // segue to navigation sending location details (looks like this might still be held globally
+        
         // This needs to be set to users current location
         locManager.requestWhenInUseAuthorization()
         
@@ -94,14 +93,16 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
             guard let currentLocation = locManager.location else {
                 return
             }
-            print("Current Lat: ", currentLocation.coordinate.latitude)
-            print("Current Long: ", currentLocation.coordinate.longitude)
-            
+           
+            // Set lat/longs for location and current position
             let currentLat = currentLocation.coordinate.latitude
             let currentLong = currentLocation.coordinate.longitude
+            let locationLat = Double(location[0].latitude)
+            let locationLong = Double(location[0].longitude)
+            let locationName = location[0].location
             
             let origin = Waypoint(coordinate: CLLocationCoordinate2D(latitude: currentLat, longitude: currentLong), name: "Your Location")
-            let destination = Waypoint(coordinate: CLLocationCoordinate2D(latitude: 50.045560, longitude: -5.655122), name: "Porthcurno")
+            let destination = Waypoint(coordinate: CLLocationCoordinate2D(latitude: locationLat ?? currentLat, longitude: locationLong ?? currentLong), name: locationName)
             
             let options = NavigationRouteOptions(waypoints: [origin, destination])
             

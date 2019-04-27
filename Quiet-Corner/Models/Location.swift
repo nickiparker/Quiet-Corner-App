@@ -17,6 +17,8 @@ struct Location {
     var trails: Bool
     var gardens: Bool
     var historical: Bool
+    var latitude: String
+    var longitude: String
     
     var dictionary: [String: Any] {
         return[
@@ -26,7 +28,9 @@ struct Location {
             "cafe": cafe,
             "trails": trails,
             "gardens": gardens,
-            "historical": historical
+            "historical": historical,
+            "latitude": latitude,
+            "longitude": longitude
         ]
     }
 }
@@ -39,11 +43,12 @@ extension Location {
         let cafe = dictionary["cafe"] as? Bool,
         let trails = dictionary["trails"] as? Bool,
         let gardens = dictionary["gardens"] as? Bool,
-        let historical = dictionary["historical"] as? Bool
+        let historical = dictionary["historical"] as? Bool,
+        let latitude = dictionary["latitude"] as? String,
+        let longitude = dictionary["longitude"] as? String
         else { return nil }
         
-        self.init(description: description, location: location, id: id, beach: beach, cafe: cafe, trails: trails, gardens: gardens, historical: historical)
-        
+        self.init(description: description, location: location, id: id, beach: beach, cafe: cafe, trails: trails, gardens: gardens, historical: historical, latitude: latitude, longitude: longitude)
     }
 }
 

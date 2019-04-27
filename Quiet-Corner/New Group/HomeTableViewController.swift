@@ -56,6 +56,8 @@ class HomeTableViewController: UITableViewController {
                 print("Error fetching snapshot results: \(error!)")
                 return
             }
+            
+            print(snapshot.documents[0].data())
             let models = snapshot.documents.map { (document) -> Location in
                 if let model = Location(dictionary: document.data(), id: document.documentID) {
                     return model
