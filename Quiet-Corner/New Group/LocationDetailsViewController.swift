@@ -44,10 +44,11 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
         }
     }
     @IBOutlet weak var locationDescription: UILabel!
+    @IBOutlet weak var journeyTime: UILabel!
+    @IBOutlet weak var journeyDistance: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(location)
         locationLabel.text = location[0].location
         locationDescription.text = location[0].description
         
@@ -60,6 +61,40 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
             // Do something
             self.advertImage.image = image
         }
+        
+        // Add journey distance and travel time
+        // This needs to be set to users current location
+        locManager.requestWhenInUseAuthorization()
+        
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
+            guard let currentLocation = locManager.location else {
+                return
+            }
+            
+            // Set lat/longs for location and current position
+            let currentLat = currentLocation.coordinate.latitude
+            let currentLong = currentLocation.coordinate.longitude
+            let locationLat = Double(location[0].latitude)
+            let locationLong = Double(location[0].longitude)
+            let locationName = location[0].location
+            
+            let origin = Waypoint(coordinate: CLLocationCoordinate2D(latitude: currentLat, longitude: currentLong), name: "Your Location")
+            let destination = Waypoint(coordinate: CLLocationCoordinate2D(latitude: locationLat ?? currentLat, longitude: locationLong ?? currentLong), name: locationName)
+            
+            let options = NavigationRouteOptions(waypoints: [origin, destination])
+            
+            Directions.shared.calculate(options) { (waypoints, routes, error) in
+                guard let route = routes?.first else { return }
+                
+                let locationDistanceMiles = lround(route.distance / 1609.344)
+                let locationTravelTime = lround(route.expectedTravelTime / 60)
+                
+                self.journeyTime.text = String(locationTravelTime) + " Mins"
+                self.journeyDistance.text = String(locationDistanceMiles) + " Miles"
+            }
+        }
+
         
         // need to create logic to add icons for interests
         
