@@ -170,19 +170,34 @@ PODS:
   - gRPC-Core/Interface (1.17.0)
   - GTMSessionFetcher/Core (1.2.1)
   - leveldb-library (1.20)
-  - Mapbox-iOS-SDK (4.9.0)
-  - MapboxDirections.swift (0.20.0):
+  - Mapbox-iOS-SDK (4.10.0)
+  - MapboxCoreNavigation (0.31.0):
+    - MapboxDirections.swift (~> 0.27.3)
+    - MapboxMobileEvents (~> 0.8.1)
+    - MapboxNavigationNative (~> 6.1.1)
+    - Turf (~> 0.3.0)
+  - MapboxDirections.swift (0.27.3):
     - Polyline (~> 4.2)
+  - MapboxMobileEvents (0.8.1)
+  - MapboxNavigation (0.31.0):
+    - Mapbox-iOS-SDK (~> 4.3)
+    - MapboxCoreNavigation (= 0.31.0)
+    - MapboxSpeech (~> 0.1.0)
+    - Solar (~> 2.1)
+  - MapboxNavigationNative (6.1.3)
+  - MapboxSpeech (0.1.1)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - Polyline (4.2.0)
+  - Polyline (4.2.1)
   - Protobuf (3.7.0)
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
+  - Solar (2.1.0)
+  - Turf (0.3.0)
   - TwitterCore (3.2.0)
   - TwitterKit (3.4.2):
     - TwitterCore (>= 3.2.0)
@@ -193,8 +208,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - FirebaseAuth
   - FirebaseUI
-  - Mapbox-iOS-SDK (~> 4.0)
-  - MapboxDirections.swift (= 0.20.0)
+  - MapboxNavigation (~> 0.31.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -221,11 +235,18 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - Mapbox-iOS-SDK
+    - MapboxCoreNavigation
     - MapboxDirections.swift
+    - MapboxMobileEvents
+    - MapboxNavigation
+    - MapboxNavigationNative
+    - MapboxSpeech
     - nanopb
     - Polyline
     - Protobuf
     - SDWebImage
+    - Solar
+    - Turf
     - TwitterCore
     - TwitterKit
 
@@ -252,15 +273,22 @@ SPEC CHECKSUMS:
   gRPC-Core: 4028031ed2c5267cca0d846c876d8046b1ecb9b6
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
-  Mapbox-iOS-SDK: 225036950837cbe408e6b333e51cd6001c122499
-  MapboxDirections.swift: 9a46ca0f0608c76393f392ae793459cc30aa846f
+  Mapbox-iOS-SDK: 8b1b777de7de373cdf000994c91af101ef886477
+  MapboxCoreNavigation: 203f774086328766e5d084e02e3855b7459ea0dd
+  MapboxDirections.swift: af3d8bc8cd80ed6e498dd6ed933f3c348799e1e2
+  MapboxMobileEvents: 0f30fe39687f26fd8f255335053023ba039a0392
+  MapboxNavigation: 188a6e4652da8de68b2e19bf7928a40766e9f3eb
+  MapboxNavigationNative: c7340cdfcb28f88aa02b6e3896151f4cd897f323
+  MapboxSpeech: 59b3984d3f433a443d24acf53097f918c5cc70f9
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Polyline: 3d69f75bb136357e27291d439d0436c6ebda57a4
+  Polyline: 0e9890790292741c8186201a536b6bb6a78d02dd
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  Solar: 2dc6e7cc39186cb0c8228fa08df76fb50c7d8f24
+  Turf: c6bdf62d6a70c647874f295dd1cf4eefc0c3e9e6
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: d22ec07c6d898b14ab35d162902ba8a9cb26e499
+PODFILE CHECKSUM: 087d591130d9f50e5978ea68acdf1813a5cc9b3a
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1

@@ -2,16 +2,22 @@
 //  LocationDetailsViewController.swift
 //  Quiet-Corner
 //
-//  Created by JODIE PARKER on 26/04/2019.
+//  Created by NICKI PARKER on 26/04/2019.
 //  Copyright © 2019 Nickiparker. All rights reserved.
 //
 
 import UIKit
 import SDWebImage
-import Accelerate
+import MapboxDirections
+import MapboxCoreNavigation
+import MapboxNavigation
 
 class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate {
 
+    // To help get users current long/lat coordinates
+    var locManager = CLLocationManager()
+    var currentLocation: CLLocation!
+    
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var advertImage: UIImageView! {
         didSet {
@@ -56,6 +62,7 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
         }
         
         // need to create logic to add icons for interests
+        
     }
     
     // Resize image from url to be consistent with UIImageView
@@ -78,7 +85,35 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
     
     @IBAction func goToNavigation(_ sender: Any) {
         
-        // segue to navigation sending location details (looks like this might still be held globally
+        // This needs to be set to users current location
+        locManager.requestWhenInUseAuthorization()
+        
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
+            guard let currentLocation = locManager.location else {
+                return
+            }
+           
+            // Set lat/longs for location and current position
+            let currentLat = currentLocation.coordinate.latitude
+            let currentLong = currentLocation.coordinate.longitude
+            let locationLat = Double(location[0].latitude)
+            let locationLong = Double(location[0].longitude)
+            let locationName = location[0].location
+            
+            let origin = Waypoint(coordinate: CLLocationCoordinate2D(latitude: currentLat, longitude: currentLong), name: "Your Location")
+            let destination = Waypoint(coordinate: CLLocationCoordinate2D(latitude: locationLat ?? currentLat, longitude: locationLong ?? currentLong), name: locationName)
+            
+            let options = NavigationRouteOptions(waypoints: [origin, destination])
+            
+            Directions.shared.calculate(options) { (waypoints, routes, error) in
+                guard let route = routes?.first else { return }
+                
+                let viewController = NavigationViewController(for: route)
+                self.present(viewController, animated: true, completion: nil)
+            }
+        }
+
     }
     
     /*
