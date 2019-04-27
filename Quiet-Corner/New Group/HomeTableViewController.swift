@@ -8,6 +8,9 @@
 
 import UIKit
 import Firebase
+import MapboxDirections
+import MapboxCoreNavigation
+import MapboxNavigation
 
 var location: [Location] = []
 
@@ -17,6 +20,10 @@ class HomeTableViewController: UITableViewController {
     let db = Firestore.firestore()
     private var documents: [DocumentSnapshot] = []
     public var locations: [Location] = []
+    
+    // To help get users current long/lat coordinates
+    var locManager = CLLocationManager()
+    var currentLocation: CLLocation!
 
     @IBAction func didTapFilterButton(_ sender: UIBarButtonItem) {
         present(filter.navigationController, animated: true, completion: nil)
@@ -110,7 +117,38 @@ class HomeTableViewController: UITableViewController {
         let location = locations[indexPath.row]
         
         cell.locationLabel!.text = location.location
-        cell.descriptionLabel!.text = location.description
+        
+        // Add journey distance and travel time
+        // This needs to be set to users current location
+        locManager.requestWhenInUseAuthorization()
+        
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
+            let currentLocation = locManager.location
+            
+            // Set lat/longs for location and current position
+            let currentLat = currentLocation!.coordinate.latitude
+            let currentLong = currentLocation!.coordinate.longitude
+            let locationLat = Double(location.latitude)
+            let locationLong = Double(location.longitude)
+            let locationName = location.location
+            
+            let origin = Waypoint(coordinate: CLLocationCoordinate2D(latitude: currentLat, longitude: currentLong), name: "Your Location")
+            let destination = Waypoint(coordinate: CLLocationCoordinate2D(latitude: locationLat ?? currentLat, longitude: locationLong ?? currentLong), name: locationName)
+            
+            let options = NavigationRouteOptions(waypoints: [origin, destination])
+            
+            Directions.shared.calculate(options) { (waypoints, routes, error) in
+                guard let route = routes?.first else { return }
+                
+                let locationDistanceMiles = lround(route.distance / 1609.344)
+                let locationTravelTime = lround(route.expectedTravelTime / 60)
+                
+                cell.journeyTime.text = String(locationTravelTime) + " Mins"
+                cell.journeyDistance.text = String(locationDistanceMiles) + " Miles"
+            }
+        }
+
 
         return cell
     }
