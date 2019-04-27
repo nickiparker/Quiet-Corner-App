@@ -366,6 +366,18 @@
                                     <constraint firstAttribute="height" constant="140" id="5Vj-1r-KOi"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journey Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qR-yW-mdD">
+                                <rect key="frame" x="238" y="129" width="122" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journey Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfi-yx-IqM">
+                                <rect key="frame" x="203" y="97" width="157" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -373,8 +385,12 @@
                             <constraint firstItem="j1S-89-ExB" firstAttribute="centerX" secondItem="pkm-F6-1aQ" secondAttribute="centerX" id="8hX-zF-Q79"/>
                             <constraint firstItem="YGW-qz-SMD" firstAttribute="trailing" secondItem="4JA-na-C18" secondAttribute="trailing" id="AMN-Tg-87n"/>
                             <constraint firstItem="cj7-Ay-m2J" firstAttribute="leading" secondItem="Wcx-OZ-EiB" secondAttribute="leading" constant="1" id="Cu7-e7-Zi4"/>
+                            <constraint firstItem="8qR-yW-mdD" firstAttribute="top" secondItem="Gfi-yx-IqM" secondAttribute="bottom" constant="8" symbolic="YES" id="ILr-66-vgK"/>
                             <constraint firstItem="j1S-89-ExB" firstAttribute="leading" secondItem="Wcx-OZ-EiB" secondAttribute="leading" constant="141" id="LUu-8Y-5an"/>
                             <constraint firstItem="4JA-na-C18" firstAttribute="top" secondItem="YGW-qz-SMD" secondAttribute="bottom" constant="68" id="OTF-qg-YmB"/>
+                            <constraint firstItem="Gfi-yx-IqM" firstAttribute="top" secondItem="Wcx-OZ-EiB" secondAttribute="top" constant="33" id="UYe-Kq-avR"/>
+                            <constraint firstItem="Gfi-yx-IqM" firstAttribute="trailing" secondItem="YGW-qz-SMD" secondAttribute="trailing" id="VYw-Nl-LpC"/>
+                            <constraint firstItem="Gfi-yx-IqM" firstAttribute="trailing" secondItem="8qR-yW-mdD" secondAttribute="trailing" id="YdS-8k-SVK"/>
                             <constraint firstItem="Wcx-OZ-EiB" firstAttribute="bottom" secondItem="j1S-89-ExB" secondAttribute="bottom" constant="30" id="ZQy-Nd-pmy"/>
                             <constraint firstItem="Her-9x-5QA" firstAttribute="centerX" secondItem="j1S-89-ExB" secondAttribute="centerX" id="dGr-Wh-ZYd"/>
                             <constraint firstItem="YGW-qz-SMD" firstAttribute="top" secondItem="cj7-Ay-m2J" secondAttribute="bottom" constant="-70" id="goZ-2q-OL6"/>
@@ -389,6 +405,8 @@
                     </view>
                     <connections>
                         <outlet property="advertImage" destination="Her-9x-5QA" id="avR-jD-Lg1"/>
+                        <outlet property="journeyDistance" destination="Gfi-yx-IqM" id="9Qm-J4-wx0"/>
+                        <outlet property="journeyTime" destination="8qR-yW-mdD" id="bI1-zc-13S"/>
                         <outlet property="locationDescription" destination="4JA-na-C18" id="qO2-Se-rhw"/>
                         <outlet property="locationImage" destination="cj7-Ay-m2J" id="uSX-7m-auv"/>
                         <outlet property="locationLabel" destination="YGW-qz-SMD" id="byi-8Y-ZuW"/>
