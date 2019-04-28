@@ -25,8 +25,6 @@ class FilterTableViewController: UITableViewController {
             return (navigationController: navController, filterController: controller)
      }
     
-    
-    
     var filters = Filters(dictionary: ["String" : Bool.self])
 
     @IBAction func applyFilters(_ sender: UIBarButtonItem) {
