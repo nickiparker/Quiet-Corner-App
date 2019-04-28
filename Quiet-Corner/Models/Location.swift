@@ -48,9 +48,13 @@ extension Location {
         let historical = dictionary["historical"] as? Bool,
         let latitude = dictionary["latitude"] as? String,
         let longitude = dictionary["longitude"] as? String,
-        let imageURL = dictionary["imageURL"] as? String ?? "https://static2.bigstockphoto.com/2/6/2/large1500/262292797.jpg" as? String
+        var imageURL = dictionary["imageURL"] as? String ?? "https://static2.bigstockphoto.com/2/6/2/large1500/262292797.jpg" as? String
         
         else { return nil }
+        
+        if imageURL == "" {
+            imageURL = "https://static2.bigstockphoto.com/2/6/2/large1500/262292797.jpg"
+        }
         
         self.init(description: description, location: location, id: id, beach: beach, cafe: cafe, trails: trails, gardens: gardens, historical: historical, latitude: latitude, longitude: longitude, imageURL: imageURL)
     }

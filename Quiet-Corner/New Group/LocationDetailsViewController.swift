@@ -53,10 +53,11 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
         locationDescription.text = location[0].description
         
         SDWebImageManager.shared().delegate = self
-        SDWebImageManager.shared().loadImage(with: URL(string: "https://static2.bigstockphoto.com/2/6/2/large1500/262292797.jpg"), options: [], progress: nil) { (image, data, error, cacheType, finished, url) in
+        SDWebImageManager.shared().loadImage(with: URL(string: location[0].imageURL), options: [], progress: nil) { (image, data, error, cacheType, finished, url) in
             // Do something
             self.locationImage.image = image
         }
+        
         SDWebImageManager.shared().loadImage(with: URL(string: "https://static2.bigstockphoto.com/2/6/2/large1500/262292797.jpg"), options: [], progress: nil) { (image, data, error, cacheType, finished, url) in
             // Do something
             self.advertImage.image = image
