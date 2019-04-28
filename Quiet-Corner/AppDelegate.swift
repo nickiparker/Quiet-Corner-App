@@ -10,11 +10,13 @@ import UIKit
 import Firebase
 //import FirebaseAuth
 import FirebaseUI
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    let locationManager = CLLocationManager()
     
     // ***** added for tutorial
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -28,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Allows database to work offline
         Database.database().isPersistenceEnabled = true
+        
+        // Request location permissions
+        locationManager.requestAlwaysAuthorization()
         return true
     }
     
