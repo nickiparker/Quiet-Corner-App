@@ -425,7 +425,7 @@
         <!--Map View-->
         <scene sceneID="7en-xf-brQ">
             <objects>
-                <viewController id="hws-Am-cF4" userLabel="Map View" customClass="HomeViewController" customModule="Quiet_Corner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hws-Am-cF4" userLabel="Map View" customClass="MapViewController" customModule="Quiet_Corner" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L9f-Ve-EOt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -506,7 +506,7 @@
         <!--Tab Bar-->
         <scene sceneID="E3C-t3-TuR">
             <objects>
-                <tabBarController title="Profile" id="1RL-Nz-xAS" userLabel="Tab Bar" sceneMemberID="viewController">
+                <tabBarController title="Profile" id="1RL-Nz-xAS" userLabel="Tab Bar" customClass="TabBarController" customModule="Quiet_Corner" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="59U-7c-Hzw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

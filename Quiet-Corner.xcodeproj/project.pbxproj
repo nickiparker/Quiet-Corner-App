@@ -18,6 +18,8 @@
 		0C85888B224BE6470016A584 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C85888A224BE6470016A584 /* Themes.swift */; };
 		0C85888D224BE6F10016A584 /* locations.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 0C85888C224BE6F10016A584 /* locations.geojson */; };
 		0C85888F224BEB310016A584 /* CustomItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C85888E224BEB310016A584 /* CustomItemView.xib */; };
+		0CAB53A22275B96600BF6D27 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAB53A12275B96600BF6D27 /* MapViewController.swift */; };
+		0CAB53A82275ED8000BF6D27 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAB53A72275ED8000BF6D27 /* TabBarController.swift */; };
 		0CB038D22268A6D5001D41BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB038D12268A6D5001D41BD /* ProfileViewController.swift */; };
 		0CB038D42268B59B001D41BD /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB038D32268B59B001D41BD /* CurrentUser.swift */; };
 		0CCF3D16225518ED00D8887F /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCF3D15225518ED00D8887F /* FilterTableViewController.swift */; };
@@ -44,6 +46,8 @@
 		0C85888A224BE6470016A584 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		0C85888C224BE6F10016A584 /* locations.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = locations.geojson; sourceTree = "<group>"; };
 		0C85888E224BEB310016A584 /* CustomItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomItemView.xib; sourceTree = "<group>"; };
+		0CAB53A12275B96600BF6D27 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0CAB53A72275ED8000BF6D27 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		0CB038D12268A6D5001D41BD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0CB038D32268B59B001D41BD /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		0CCF3D15225518ED00D8887F /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 				0CE0AF9D225D06EC00B961C6 /* LocationTableViewCell.swift */,
 				0CB038D12268A6D5001D41BD /* ProfileViewController.swift */,
 				0C137424227359E200B73D54 /* LocationDetailsViewController.swift */,
+				0CAB53A12275B96600BF6D27 /* MapViewController.swift */,
 			);
 			name = ViewControllers;
 			path = "New Group";
@@ -145,6 +150,7 @@
 				0CE0AF94225BCF0000B961C6 /* User.swift */,
 				0CB038D32268B59B001D41BD /* CurrentUser.swift */,
 				0CE7164C2268E32C00310160 /* Filters.swift */,
+				0CAB53A72275ED8000BF6D27 /* TabBarController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -391,6 +397,8 @@
 				0CE7164D2268E32C00310160 /* Filters.swift in Sources */,
 				0CE0AF9E225D06EC00B961C6 /* LocationTableViewCell.swift in Sources */,
 				0C858889224BDFF30016A584 /* HomeViewController.swift in Sources */,
+				0CAB53A82275ED8000BF6D27 /* TabBarController.swift in Sources */,
+				0CAB53A22275B96600BF6D27 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

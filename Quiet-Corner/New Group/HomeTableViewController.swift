@@ -58,13 +58,14 @@ class HomeTableViewController: UITableViewController {
         guard let query = query else { return }
         stopObserving()
         
+        let tabBar = tabBarController as! TabBarController
+        
         listener = query.addSnapshotListener { [unowned self] (documents, error) in
             guard let snapshot = documents else {
                 print("Error fetching snapshot results: \(error!)")
                 return
             }
             
-            print(snapshot.documents[0].data())
             let models = snapshot.documents.map { (document) -> Location in
                 if let model = Location(dictionary: document.data(), id: document.documentID) {
                     return model
@@ -75,6 +76,9 @@ class HomeTableViewController: UITableViewController {
             }
             self.locations = models
             self.documents = snapshot.documents
+            
+            
+            tabBar.locations = self.locations
             
             if self.documents.count > 0 {
                // TODO
@@ -89,6 +93,7 @@ class HomeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         query = baseQuery()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,7 +102,6 @@ class HomeTableViewController: UITableViewController {
     }
     
      override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
         observeQuery()
     }
@@ -120,7 +124,6 @@ class HomeTableViewController: UITableViewController {
         
         // Add journey distance and travel time
         // This needs to be set to users current location
-        locManager.requestWhenInUseAuthorization()
         
         if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
             CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
