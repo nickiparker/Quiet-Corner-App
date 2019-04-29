@@ -11,10 +11,11 @@ import Firebase
 import MapboxDirections
 import MapboxCoreNavigation
 import MapboxNavigation
+import SDWebImage
 
 var location: [Location] = []
 
-class HomeTableViewController: UITableViewController {
+class HomeTableViewController: UITableViewController, SDWebImageManagerDelegate {
     
     // locations firebase
     let db = Firestore.firestore()
@@ -122,6 +123,12 @@ class HomeTableViewController: UITableViewController {
         
         cell.locationLabel!.text = location.location
         
+        SDWebImageManager.shared().delegate = self
+        SDWebImageManager.shared().loadImage(with: URL(string: location.imageURL), options: [], progress: nil) { (image, data, error, cacheType, finished, url) in
+            // Do something
+            cell.locationImage.image = image
+        }
+        
         // Add journey distance and travel time
         // This needs to be set to users current location
         
@@ -162,6 +169,24 @@ class HomeTableViewController: UITableViewController {
         location = [locations[indexPath.row]]
     
         performSegue(withIdentifier: "toLocationDetail", sender: self)
+    }
+    
+    // Resize image from url to be consistent with UIImageView
+    func imageManager(_ imageManager: SDWebImageManager, transformDownloadedImage image: UIImage?, with imageURL: URL?) -> UIImage? {
+        guard let image = image, let imageURL = imageURL else {
+            return nil
+        }
+        if (imageURL.lastPathComponent == "large" && (image.size.width > 1000 || image.size.width > 1000)) {
+            let targetSize = CGSize(width: 82.5, height: 82.5)
+            UIGraphicsBeginImageContextWithOptions(targetSize, !SDCGImageRefContainsAlpha(image.cgImage), image.scale)
+            image.draw(in: CGRect(origin: .zero, size: targetSize))
+            
+            let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return scaledImage
+        } else {
+            return image
+        }
     }
 }
 
