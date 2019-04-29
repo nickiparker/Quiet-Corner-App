@@ -14,6 +14,8 @@ import MapboxNavigation
 
 class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate {
 
+    @IBOutlet var goNavigationButton: UIButton!
+    
     // To help get users current long/lat coordinates
     var locManager = CLLocationManager()
     var currentLocation: CLLocation!
@@ -51,6 +53,8 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
         super.viewDidLoad()
         locationLabel.text = location[0].location
         locationDescription.text = location[0].description
+        
+        goNavigationButton.applyDesign()
         
         SDWebImageManager.shared().delegate = self
         SDWebImageManager.shared().loadImage(with: URL(string: location[0].imageURL), options: [], progress: nil) { (image, data, error, cacheType, finished, url) in
