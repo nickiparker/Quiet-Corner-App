@@ -13,10 +13,12 @@ import FirebaseAuth
 class ProfileViewController: UIViewController {
     
     @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var logoutButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        logoutButton.applyDesign()
     }
     
     override func viewWillAppear(_ animated: Bool) {
