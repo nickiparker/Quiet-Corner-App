@@ -23,17 +23,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ON4-X5-30L">
-                                <rect key="frame" x="103" y="465" width="168" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ON4-X5-30L">
+                                <rect key="frame" x="103.5" y="511" width="168" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="PO4-Ei-K1r"/>
+                                    <constraint firstAttribute="width" constant="168" id="lYr-N9-kqb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                 <state key="normal" title="Log in"/>
                                 <connections>
                                     <action selector="doBtnLogIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zGB-ZG-nfw"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="quiet-corner-logo" translatesAutoresizingMaskIntoConstraints="NO" id="xcy-Zn-fnD">
+                                <rect key="frame" x="54" y="147" width="267" height="284"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xcy-Zn-fnD" firstAttribute="centerX" secondItem="ON4-X5-30L" secondAttribute="centerX" id="A13-eL-uZG"/>
+                            <constraint firstItem="ON4-X5-30L" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="G7O-eR-iuk"/>
+                            <constraint firstItem="xcy-Zn-fnD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="54" id="GAQ-Gn-8Yj"/>
+                            <constraint firstItem="ON4-X5-30L" firstAttribute="top" secondItem="xcy-Zn-fnD" secondAttribute="bottom" constant="80" id="jdh-MA-aaH"/>
+                            <constraint firstItem="xcy-Zn-fnD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="127" id="wQb-0Z-XqB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ON4-X5-30L" secondAttribute="bottom" constant="108" id="yPS-Xe-mnB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
@@ -609,5 +623,6 @@
         <image name="list-icon-25x25px-off" width="25" height="25"/>
         <image name="map-icon-30x30px-off" width="30" height="30"/>
         <image name="profile-icon-30x30px-off" width="30" height="30"/>
+        <image name="quiet-corner-logo" width="290" height="242"/>
     </resources>
 </document>
