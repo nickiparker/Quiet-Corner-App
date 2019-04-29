@@ -30,7 +30,7 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
     @IBOutlet weak var locationImage: UIImageView! {
         didSet {
             let gradient = CAGradientLayer()
-            gradient.colors = [UIColor(red: 0, green: 0, blue: 0, alpha: 0.6).cgColor, UIColor.clear.cgColor]
+            gradient.colors = [UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor, UIColor.clear.cgColor]
             gradient.locations = [0.0, 1.0]
             
             gradient.startPoint = CGPoint(x: 0, y: 1)
@@ -99,10 +99,6 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
                 self.journeyDistance.text = String(locationDistanceMiles) + " Miles"
             }
         }
-
-        
-        // need to create logic to add icons for interests
-        
     }
     
     // Resize image from url to be consistent with UIImageView
@@ -155,15 +151,4 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
         }
 
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

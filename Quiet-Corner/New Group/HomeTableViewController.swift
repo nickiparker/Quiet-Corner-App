@@ -159,7 +159,6 @@ class HomeTableViewController: UITableViewController, SDWebImageManagerDelegate 
             }
         }
 
-
         return cell
     }
     
