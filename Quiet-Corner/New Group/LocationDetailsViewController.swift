@@ -69,7 +69,11 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
         
         // Display advert for Locations that have paid for advertising
         if location[0].location == "Porthcurno Beach" {
-            self.advertImage.image = UIImage(named: "cafe-icon-coral-30x30px")
+            self.advertImage.image = UIImage(named: "porthcurno-advert")
+        } else if location[0].location == "St Michael’s Mount" {
+             self.advertImage.image = UIImage(named: "st-michaels-mount-advert")
+        } else if location[0].location == "Trebah Garden" {
+             self.advertImage.image = UIImage(named: "trebah-advert")
         } else {
             self.advertImage.isHidden = true
         }
