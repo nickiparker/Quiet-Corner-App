@@ -158,6 +158,20 @@ class HomeTableViewController: UITableViewController, SDWebImageManagerDelegate 
                 cell.journeyDistance.text = String(locationDistanceMiles) + " Miles"
             }
         }
+        
+        // Set promoted colour
+        let red = CGFloat(89/255.0)
+        let green = CGFloat(201/255.0)
+        let blue = CGFloat(165/255.0)
+        
+        // Style locations with marketing - promoted
+        if (location.location == "Porthcurno Beach") ||
+            (location.location == "St Michael’s Mount") ||
+            (location.location == "Trebah Garden") {
+            cell.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 0.2)
+        } else {
+            cell.backgroundColor = .white
+        }
 
         return cell
     }
