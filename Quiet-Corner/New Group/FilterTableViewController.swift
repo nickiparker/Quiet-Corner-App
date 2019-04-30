@@ -36,6 +36,8 @@ class FilterTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
+        // Creates an invisible footer view to remove unwanted lines below list
+        tableView.tableFooterView = UIView(frame: .zero)
     }
     
     // Filter toggles

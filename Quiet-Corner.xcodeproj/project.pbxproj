@@ -14,6 +14,19 @@
 		0C3209F52219F58300C1CFEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C3209F42219F58300C1CFEA /* Assets.xcassets */; };
 		0C3209F82219F58300C1CFEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C3209F62219F58300C1CFEA /* LaunchScreen.storyboard */; };
 		0C320A002219F6AB00C1CFEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C3209FF2219F6AB00C1CFEA /* GoogleService-Info.plist */; };
+		0C6193EF22774D1A00EDA18B /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193E222774D1A00EDA18B /* OpenSans-Bold.ttf */; };
+		0C6193F022774D1A00EDA18B /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193E322774D1A00EDA18B /* OpenSans-BoldItalic.ttf */; };
+		0C6193F122774D1A00EDA18B /* OpenSans-CondensedBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193E422774D1A00EDA18B /* OpenSans-CondensedBold.ttf */; };
+		0C6193F222774D1A00EDA18B /* OpenSans-CondensedLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193E522774D1A00EDA18B /* OpenSans-CondensedLight.ttf */; };
+		0C6193F322774D1A00EDA18B /* OpenSans-CondensedLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193E622774D1A00EDA18B /* OpenSans-CondensedLightItalic.ttf */; };
+		0C6193F422774D1A00EDA18B /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193E722774D1A00EDA18B /* OpenSans-ExtraBold.ttf */; };
+		0C6193F522774D1A00EDA18B /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193E822774D1A00EDA18B /* OpenSans-ExtraBoldItalic.ttf */; };
+		0C6193F622774D1A00EDA18B /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193E922774D1A00EDA18B /* OpenSans-Italic.ttf */; };
+		0C6193F722774D1A00EDA18B /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193EA22774D1A00EDA18B /* OpenSans-Light.ttf */; };
+		0C6193F822774D1A00EDA18B /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193EB22774D1A00EDA18B /* OpenSans-Semibold.ttf */; };
+		0C6193F922774D1A00EDA18B /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193EC22774D1A00EDA18B /* OpenSans-SemiboldItalic.ttf */; };
+		0C6193FA22774D1A00EDA18B /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193ED22774D1A00EDA18B /* OpenSans.ttf */; };
+		0C6193FB22774D1A00EDA18B /* OpenSansLight-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193EE22774D1A00EDA18B /* OpenSansLight-Italic.ttf */; };
 		0C858889224BDFF30016A584 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C858888224BDFF30016A584 /* HomeViewController.swift */; };
 		0C85888B224BE6470016A584 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C85888A224BE6470016A584 /* Themes.swift */; };
 		0C85888D224BE6F10016A584 /* locations.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 0C85888C224BE6F10016A584 /* locations.geojson */; };
@@ -42,6 +55,19 @@
 		0C3209F72219F58300C1CFEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C3209F92219F58300C1CFEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C3209FF2219F6AB00C1CFEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C6193E222774D1A00EDA18B /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		0C6193E322774D1A00EDA18B /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		0C6193E422774D1A00EDA18B /* OpenSans-CondensedBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-CondensedBold.ttf"; sourceTree = "<group>"; };
+		0C6193E522774D1A00EDA18B /* OpenSans-CondensedLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-CondensedLight.ttf"; sourceTree = "<group>"; };
+		0C6193E622774D1A00EDA18B /* OpenSans-CondensedLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-CondensedLightItalic.ttf"; sourceTree = "<group>"; };
+		0C6193E722774D1A00EDA18B /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		0C6193E822774D1A00EDA18B /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		0C6193E922774D1A00EDA18B /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		0C6193EA22774D1A00EDA18B /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		0C6193EB22774D1A00EDA18B /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		0C6193EC22774D1A00EDA18B /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		0C6193ED22774D1A00EDA18B /* OpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSans.ttf; sourceTree = "<group>"; };
+		0C6193EE22774D1A00EDA18B /* OpenSansLight-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSansLight-Italic.ttf"; sourceTree = "<group>"; };
 		0C858888224BDFF30016A584 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0C85888A224BE6470016A584 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		0C85888C224BE6F10016A584 /* locations.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = locations.geojson; sourceTree = "<group>"; };
@@ -104,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				0C3209F12219F58100C1CFEA /* Main.storyboard */,
+				0C6193E122774D1A00EDA18B /* Fonts */,
 				0C3209ED2219F58100C1CFEA /* AppDelegate.swift */,
 				0CE0AF92225BCF0000B961C6 /* Models */,
 				0CCF3D1C225BBF6700D8887F /* ViewControllers */,
@@ -115,6 +142,26 @@
 				0CCF3D1D225BBF8C00D8887F /* Data */,
 			);
 			path = "Quiet-Corner";
+			sourceTree = "<group>";
+		};
+		0C6193E122774D1A00EDA18B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0C6193E222774D1A00EDA18B /* OpenSans-Bold.ttf */,
+				0C6193E322774D1A00EDA18B /* OpenSans-BoldItalic.ttf */,
+				0C6193E422774D1A00EDA18B /* OpenSans-CondensedBold.ttf */,
+				0C6193E522774D1A00EDA18B /* OpenSans-CondensedLight.ttf */,
+				0C6193E622774D1A00EDA18B /* OpenSans-CondensedLightItalic.ttf */,
+				0C6193E722774D1A00EDA18B /* OpenSans-ExtraBold.ttf */,
+				0C6193E822774D1A00EDA18B /* OpenSans-ExtraBoldItalic.ttf */,
+				0C6193E922774D1A00EDA18B /* OpenSans-Italic.ttf */,
+				0C6193EA22774D1A00EDA18B /* OpenSans-Light.ttf */,
+				0C6193EB22774D1A00EDA18B /* OpenSans-Semibold.ttf */,
+				0C6193EC22774D1A00EDA18B /* OpenSans-SemiboldItalic.ttf */,
+				0C6193ED22774D1A00EDA18B /* OpenSans.ttf */,
+				0C6193EE22774D1A00EDA18B /* OpenSansLight-Italic.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		0CCF3D1C225BBF6700D8887F /* ViewControllers */ = {
@@ -230,13 +277,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C6193F122774D1A00EDA18B /* OpenSans-CondensedBold.ttf in Resources */,
+				0C6193F522774D1A00EDA18B /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				0C85888F224BEB310016A584 /* CustomItemView.xib in Resources */,
+				0C6193F622774D1A00EDA18B /* OpenSans-Italic.ttf in Resources */,
 				0C3209F82219F58300C1CFEA /* LaunchScreen.storyboard in Resources */,
+				0C6193EF22774D1A00EDA18B /* OpenSans-Bold.ttf in Resources */,
+				0C6193FB22774D1A00EDA18B /* OpenSansLight-Italic.ttf in Resources */,
 				0C320A002219F6AB00C1CFEA /* GoogleService-Info.plist in Resources */,
 				0CCF3D1A225BBE8200D8887F /* HomeTableViewController.xib in Resources */,
+				0C6193F322774D1A00EDA18B /* OpenSans-CondensedLightItalic.ttf in Resources */,
 				0C3209F52219F58300C1CFEA /* Assets.xcassets in Resources */,
+				0C6193FA22774D1A00EDA18B /* OpenSans.ttf in Resources */,
+				0C6193F922774D1A00EDA18B /* OpenSans-SemiboldItalic.ttf in Resources */,
+				0C6193F722774D1A00EDA18B /* OpenSans-Light.ttf in Resources */,
+				0C6193F022774D1A00EDA18B /* OpenSans-BoldItalic.ttf in Resources */,
 				0C85888D224BE6F10016A584 /* locations.geojson in Resources */,
+				0C6193F222774D1A00EDA18B /* OpenSans-CondensedLight.ttf in Resources */,
 				0C3209F32219F58100C1CFEA /* Main.storyboard in Resources */,
+				0C6193F422774D1A00EDA18B /* OpenSans-ExtraBold.ttf in Resources */,
+				0C6193F822774D1A00EDA18B /* OpenSans-Semibold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

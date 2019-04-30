@@ -14,6 +14,8 @@ import MapboxNavigation
 
 class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate {
 
+    @IBOutlet var goNavigationButton: UIButton!
+    
     // To help get users current long/lat coordinates
     var locManager = CLLocationManager()
     var currentLocation: CLLocation!
@@ -28,7 +30,7 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
     @IBOutlet weak var locationImage: UIImageView! {
         didSet {
             let gradient = CAGradientLayer()
-            gradient.colors = [UIColor(red: 0, green: 0, blue: 0, alpha: 0.6).cgColor, UIColor.clear.cgColor]
+            gradient.colors = [UIColor(red: 0, green: 0, blue: 0, alpha: 0.3).cgColor, UIColor.clear.cgColor]
             gradient.locations = [0.0, 1.0]
             
             gradient.startPoint = CGPoint(x: 0, y: 1)
@@ -52,15 +54,28 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
         locationLabel.text = location[0].location
         locationDescription.text = location[0].description
         
+        goNavigationButton.applyDesign()
+        
         SDWebImageManager.shared().delegate = self
         SDWebImageManager.shared().loadImage(with: URL(string: location[0].imageURL), options: [], progress: nil) { (image, data, error, cacheType, finished, url) in
             // Do something
             self.locationImage.image = image
         }
         
-        SDWebImageManager.shared().loadImage(with: URL(string: "https://static2.bigstockphoto.com/2/6/2/large1500/262292797.jpg"), options: [], progress: nil) { (image, data, error, cacheType, finished, url) in
-            // Do something
-            self.advertImage.image = image
+//        SDWebImageManager.shared().loadImage(with: URL(string: "https://static2.bigstockphoto.com/2/6/2/large1500/262292797.jpg"), options: [], progress: nil) { (image, data, error, cacheType, finished, url) in
+//            // Do something
+//            self.advertImage.image = image
+//        }
+        
+        // Display advert for Locations that have paid for advertising
+        if location[0].location == "Porthcurno Beach" {
+            self.advertImage.image = UIImage(named: "porthcurno-advert")
+        } else if location[0].location == "St Michael’s Mount" {
+             self.advertImage.image = UIImage(named: "st-michaels-mount-advert")
+        } else if location[0].location == "Trebah Garden" {
+             self.advertImage.image = UIImage(named: "trebah-advert")
+        } else {
+            self.advertImage.isHidden = true
         }
         
         // Add journey distance and travel time
@@ -95,10 +110,6 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
                 self.journeyDistance.text = String(locationDistanceMiles) + " Miles"
             }
         }
-
-        
-        // need to create logic to add icons for interests
-        
     }
     
     // Resize image from url to be consistent with UIImageView
@@ -151,15 +162,4 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
         }
 
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

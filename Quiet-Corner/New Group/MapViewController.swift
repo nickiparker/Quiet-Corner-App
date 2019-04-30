@@ -48,7 +48,7 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
             let currentLong = currentLocation!.coordinate.longitude
             
             // Set the map’s center coordinate and zoom level.
-            mapView.setCenter(CLLocationCoordinate2D(latitude: currentLat, longitude: currentLong), zoomLevel: 9, animated: false)
+            mapView.setCenter(CLLocationCoordinate2D(latitude: currentLat, longitude: currentLong), zoomLevel: 8.5, animated: false)
             view.addSubview(mapView)
         }
         
@@ -63,7 +63,18 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
             let point = MyCustomPointAnnotation()
             point.coordinate = CLLocationCoordinate2D(latitude: Double(location.latitude)!, longitude: Double(location.longitude)!)
             point.title = location.location
-            point.willUseImage = false
+            
+            // Display advert for Locations that have paid for advertising
+            if location.location == "Porthcurno Beach" {
+                point.willUseImage = false
+            } else if location.location == "St Michael’s Mount" {
+                point.willUseImage = false
+            } else if location.location == "Trebah Garden" {
+                point.willUseImage = false
+            } else {
+                point.willUseImage = true
+            }
+            //point.willUseImage = false
             myLocations.append(point)
         }
         

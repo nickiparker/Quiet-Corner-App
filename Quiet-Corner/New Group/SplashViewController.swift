@@ -12,7 +12,9 @@ import FirebaseAuth
 import FirebaseUI
 
 class SplashViewController: UIViewController {
-   // @IBOutlet weak var doBtnLogIn: UIButton!
+    
+    @IBOutlet var loginButton: UIButton!
+    
     
     fileprivate(set) var auth: Auth?
     fileprivate(set) var authUI: FUIAuth?
@@ -21,11 +23,15 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loginButton.applyDesign()
+
         // Use to display the UserDefaults - debugging
         //  for (key, value) in  UserDefaults.standard.dictionaryRepresentation() {
         //            print("\(key) = \(value) \n")
         //  }
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         if isLoggedIn() {
@@ -39,8 +45,9 @@ class SplashViewController: UIViewController {
     fileprivate func isLoggedIn() -> Bool {
         return UserDefaults.standard.bool(forKey: "isLoggedIn")
     }
-
+    
     @IBAction func doBtnLogIn(_ sender: Any) {
+        
         
         // Get the default auth UI object
         let authUI = FUIAuth.defaultAuthUI()
@@ -63,6 +70,23 @@ class SplashViewController: UIViewController {
     
     @IBAction func unwindToSplashView(segue:UIStoryboardSegue) { }
     
+}
+
+extension UIButton {
+    func applyDesign() {
+        
+        let redUIColor = CGFloat(89/255.0)
+        let greenUIColor = CGFloat(201/255.0)
+        let blueUIColor = CGFloat(165/255.0)
+
+        self.backgroundColor = UIColor(red: redUIColor, green: greenUIColor, blue: blueUIColor, alpha: 1.0)
+        self.layer.cornerRadius = 5
+        self.setTitleColor(UIColor.white, for: .normal)
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+    }
 }
     
 extension SplashViewController: FUIAuthDelegate {

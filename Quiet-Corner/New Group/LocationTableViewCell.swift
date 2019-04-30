@@ -13,6 +13,10 @@ class LocationTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var journeyTime: UILabel!
     @IBOutlet weak var journeyDistance: UILabel!
-    
+    @IBOutlet weak var locationImage: UIImageView!{
+        didSet {
+            locationImage.clipsToBounds = true
+        }
+    }
 }
 
