@@ -598,7 +598,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cLk-kY-Nkc"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Closest to you" id="lNS-Qq-0D0"/>
+                    <navigationItem key="navigationItem" title="Places closest to you" id="lNS-Qq-0D0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0BT-hn-BTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
