@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  ViewController.swift
 //  Quiet-Corner
 //
 //  Created by NICKI PARKER on 27/03/2019.
@@ -10,7 +10,7 @@ import UIKit
 import Mapbox
 import MapboxDirections
 
-class HomeViewController: UIViewController, MGLMapViewDelegate, CLLocationManagerDelegate {
+class ViewController: UIViewController, MGLMapViewDelegate, CLLocationManagerDelegate {
 
     // Use a MBXTheme from Themes.swift, or create a Color object that contains the necessary colors and use it to set the theme.
     var viewControllerTheme : Theme? = MBXTheme.neutralTheme
@@ -339,7 +339,7 @@ class HomeViewController: UIViewController, MGLMapViewDelegate, CLLocationManage
 }
 
 // MARK: UIPageViewControllerDelegate and UIPageViewControllerDataSource methods.
-extension HomeViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         if let view = pendingViewControllers.first?.view as? CustomItemView {

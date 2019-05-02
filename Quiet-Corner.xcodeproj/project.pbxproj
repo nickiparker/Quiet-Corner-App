@@ -27,7 +27,7 @@
 		0C6193F922774D1A00EDA18B /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193EC22774D1A00EDA18B /* OpenSans-SemiboldItalic.ttf */; };
 		0C6193FA22774D1A00EDA18B /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193ED22774D1A00EDA18B /* OpenSans.ttf */; };
 		0C6193FB22774D1A00EDA18B /* OpenSansLight-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193EE22774D1A00EDA18B /* OpenSansLight-Italic.ttf */; };
-		0C858889224BDFF30016A584 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C858888224BDFF30016A584 /* HomeViewController.swift */; };
+		0C858889224BDFF30016A584 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C858888224BDFF30016A584 /* ViewController.swift */; };
 		0C85888B224BE6470016A584 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C85888A224BE6470016A584 /* Themes.swift */; };
 		0C85888D224BE6F10016A584 /* locations.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 0C85888C224BE6F10016A584 /* locations.geojson */; };
 		0C85888F224BEB310016A584 /* CustomItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C85888E224BEB310016A584 /* CustomItemView.xib */; };
@@ -68,7 +68,7 @@
 		0C6193EC22774D1A00EDA18B /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		0C6193ED22774D1A00EDA18B /* OpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSans.ttf; sourceTree = "<group>"; };
 		0C6193EE22774D1A00EDA18B /* OpenSansLight-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSansLight-Italic.ttf"; sourceTree = "<group>"; };
-		0C858888224BDFF30016A584 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0C858888224BDFF30016A584 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0C85888A224BE6470016A584 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		0C85888C224BE6F10016A584 /* locations.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = locations.geojson; sourceTree = "<group>"; };
 		0C85888E224BEB310016A584 /* CustomItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomItemView.xib; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 				0CCF3D18225BBE8200D8887F /* HomeTableViewController.xib */,
 				0C3209EF2219F58100C1CFEA /* SplashViewController.swift */,
 				0CCF3D15225518ED00D8887F /* FilterTableViewController.swift */,
-				0C858888224BDFF30016A584 /* HomeViewController.swift */,
+				0C858888224BDFF30016A584 /* ViewController.swift */,
 				0C85888E224BEB310016A584 /* CustomItemView.xib */,
 				0CE0AF9D225D06EC00B961C6 /* LocationTableViewCell.swift */,
 				0CB038D12268A6D5001D41BD /* ProfileViewController.swift */,
@@ -456,7 +456,7 @@
 				0C3209EE2219F58100C1CFEA /* AppDelegate.swift in Sources */,
 				0CE7164D2268E32C00310160 /* Filters.swift in Sources */,
 				0CE0AF9E225D06EC00B961C6 /* LocationTableViewCell.swift in Sources */,
-				0C858889224BDFF30016A584 /* HomeViewController.swift in Sources */,
+				0C858889224BDFF30016A584 /* ViewController.swift in Sources */,
 				0CAB53A82275ED8000BF6D27 /* TabBarController.swift in Sources */,
 				0CAB53A22275B96600BF6D27 /* MapViewController.swift in Sources */,
 			);

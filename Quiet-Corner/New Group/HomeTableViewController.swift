@@ -15,7 +15,7 @@ import SDWebImage
 
 var location: [Location] = []
 
-class HomeTableViewController: UITableViewController, SDWebImageManagerDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SDWebImageManagerDelegate {
     
     // locations firebase
     let db = Firestore.firestore()
@@ -25,10 +25,14 @@ class HomeTableViewController: UITableViewController, SDWebImageManagerDelegate 
     // To help get users current long/lat coordinates
     var locManager = CLLocationManager()
     var currentLocation: CLLocation!
-
-    @IBAction func didTapFilterButton(_ sender: UIBarButtonItem) {
+    
+    @IBOutlet var tableView: UITableView!
+    
+    @IBAction func didTapFilterButton(_ sender: Any) {
         present(filter.navigationController, animated: true, completion: nil)
     }
+    
+    @IBOutlet var filterButton: UIButton!
  
     // Firebase global setter to constrain firebase query to max 50
     fileprivate func baseQuery() -> Query {
@@ -78,7 +82,6 @@ class HomeTableViewController: UITableViewController, SDWebImageManagerDelegate 
             self.locations = models
             self.documents = snapshot.documents
             
-            
             tabBar.locations = self.locations
             
             if self.documents.count > 0 {
@@ -93,6 +96,12 @@ class HomeTableViewController: UITableViewController, SDWebImageManagerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        filterButton.applyDesign()
+        tableView.delegate = self
+        tableView.dataSource = self
+        //self.tableView.register(LocationTableViewCell.self, forCellReuseIdentifier: "locationCell")
+        
         query = baseQuery()
         
     }
@@ -108,17 +117,19 @@ class HomeTableViewController: UITableViewController, SDWebImageManagerDelegate 
     }
     
     // Build out the table of locations
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "locationCell", for: indexPath) as! LocationTableViewCell
-    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "locationCell", for: indexPath) as! LocationTableViewCell
+ 
+        print("Cell: ", cell.locationLabel)
         let location = locations[indexPath.row]
         
         cell.locationLabel!.text = location.location
@@ -176,7 +187,7 @@ class HomeTableViewController: UITableViewController, SDWebImageManagerDelegate 
         return cell
     }
     
-   override  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //imageURL = imageURL(from: locations[indexPath.row].imageURL)
         location = [locations[indexPath.row]]
@@ -203,7 +214,7 @@ class HomeTableViewController: UITableViewController, SDWebImageManagerDelegate 
     }
 }
 
-extension HomeTableViewController: FilterTableViewControllerDelegate {
+extension HomeViewController: FilterTableViewControllerDelegate {
     
     func query(beach: Bool?, cafe: Bool?, gardens: Bool?, historical: Bool?, trails: Bool?) -> Query {
         var filtered = baseQuery()
@@ -245,6 +256,23 @@ extension HomeTableViewController: FilterTableViewControllerDelegate {
         observeQuery()
     }
     
+}
+
+extension UIButton {
+    func applyDesignToFilterButton() {
+        
+        let redUIColor = CGFloat(89/255.0)
+        let greenUIColor = CGFloat(201/255.0)
+        let blueUIColor = CGFloat(165/255.0)
+        
+        self.backgroundColor = UIColor(red: redUIColor, green: greenUIColor, blue: blueUIColor, alpha: 1.0)
+        self.layer.cornerRadius = 5
+        self.setTitleColor(UIColor.white, for: .normal)
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+    }
 }
 
 
