@@ -10,10 +10,11 @@ import UIKit
 
 class LocationTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var journeyTime: UILabel!
-    @IBOutlet weak var journeyDistance: UILabel!
-    @IBOutlet weak var locationImage: UIImageView!{
+    
+    @IBOutlet var locationLabel: UILabel!
+    @IBOutlet var journeyDistance: UILabel!
+    @IBOutlet var journeyTime: UILabel!
+    @IBOutlet var locationImage: UIImageView! {
         didSet {
             locationImage.clipsToBounds = true
         }

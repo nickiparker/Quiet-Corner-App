@@ -1,563 +1,283 @@
 //
-//  HomeViewController.swift
+//  HomeTableViewController.swift
 //  Quiet-Corner
 //
-//  Created by NICKI PARKER on 27/03/2019.
+//  Created by NICKI PARKER on 08/04/2019.
 //  Copyright © 2019 Nickiparker. All rights reserved.
 //
 
 import UIKit
-import Mapbox
+import Firebase
 import MapboxDirections
+import MapboxCoreNavigation
+import MapboxNavigation
+import SDWebImage
 
-class HomeViewController: UIViewController, MGLMapViewDelegate, CLLocationManagerDelegate {
+var location: [Location] = []
 
-    // Use a MBXTheme from Themes.swift, or create a Color object that contains the necessary colors and use it to set the theme.
-    var viewControllerTheme : Theme? = MBXTheme.neutralTheme
-    var centerCoordinate = CLLocationCoordinate2D(latitude: 50.184098, longitude: -5.439602) // This will serve as the center coordinate if the user denies location permissions.
-    var mapView: MGLMapView!
-    var itemView : CustomItemView! // Keeps track of the current CustomItemView.
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SDWebImageManagerDelegate {
     
-    let userLocationFeature = MGLPointFeature()
-    var userLocationCoordinate = CLLocationCoordinate2D() // This can be removed if the user location is being tracked.
-    var userLocationSource : MGLShapeSource?
+    // locations firebase
+    let db = Firestore.firestore()
+    private var documents: [DocumentSnapshot] = []
+    public var locations: [Location] = []
     
-    // Properties for the callout.
-    var pageViewController : UIPageViewController!
-    var features : [MGLPointFeature] = []
-    let uniqueIdentifier = "phone" // Replace this with the property key for a value that is unique within your data. Do not use coordinates.
-    var customItemViewSize = CGRect()
-    var featuresWithRoute : [String : (MGLPointFeature, [CLLocationCoordinate2D])] = [:]
-    var selectedFeature : (MGLPointFeature, [CLLocationCoordinate2D])?
+    // To help get users current long/lat coordinates
+    var locManager = CLLocationManager()
+    var currentLocation: CLLocation!
     
+    @IBOutlet var tableView: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = false
-        }
-        
-        mapView = MGLMapView(frame: view.bounds, styleURL: viewControllerTheme?.styleURL) // Set the map's style url.
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.delegate = self
-        mapView.zoomLevel = 10
-        
-        //   mapView.setCenter(centerCoordinate, zoomLevel: 11, animated: false)      // MARK: To center on the user's location, comment this line out and uncomment the following line.
-        
-        mapView.userTrackingMode = .follow
-        
-        view.addSubview(mapView)
-        
-        if CLLocationManager.authorizationStatus() == .denied || CLLocationManager.authorizationStatus() == .notDetermined {
-            mapView.setCenter(centerCoordinate, zoomLevel: 11, animated: false)
-        }
-        mapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleItemTap(sender:))))
-        
-        customItemViewSize = CGRect(x: 0, y: mapView.bounds.height * 3 / 4, width: view.bounds.width, height: view.bounds.height / 4)
-        
-        addPageViewController()
+    @IBAction func didTapFilterButton(_ sender: Any) {
+        present(filter.navigationController, animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
-        
-        DispatchQueue.global().async {
-            guard let url = self.viewControllerTheme?.fileURL else { return } // Set the URL containing your store locations.
-            
-            let data = try! Data(contentsOf: url)
-            DispatchQueue.main.async {
-                self.drawPointData(data: data)
-            }
-        }
-        if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            addUserLocationDot(to: style)
-        } else {
-            mapView.setCenter(centerCoordinate, zoomLevel: 11, animated: false)
-        }
+    @IBOutlet var filterButton: UIButton!
+ 
+    // Firebase global setter to constrain firebase query to max 50
+    fileprivate func baseQuery() -> Query {
+        return Firestore.firestore().collection("locations").limit(to: 50)
     }
     
-    func drawPointData(data: Data) {
-        guard let style = mapView.style else { return }
-        
-        let feature = try! MGLShape(data: data, encoding: String.Encoding.utf8.rawValue) as! MGLShapeCollectionFeature
-        
-        let source = MGLShapeSource(identifier: "store-locations", shape: feature, options: nil)
-        style.addSource(source)
-        
-        // Set the default item image.
-        style.setImage((viewControllerTheme?.defaultMarker)!, forName: "unselected_marker")
-        // Set the image for the selected item.
-        style.setImage((viewControllerTheme?.selectedMarker)!, forName: "selected_marker")
-        
-        let symbolLayer = MGLSymbolStyleLayer(identifier: "store-locations", source: source)
-        
-        symbolLayer.iconImageName = NSExpression(forConstantValue: "unselected_marker")
-        symbolLayer.iconAllowsOverlap = NSExpression(forConstantValue: 1)
-        
-        style.addLayer(symbolLayer)
-        
-        features = feature.shapes as! [MGLPointFeature]
-        if CLLocationManager.authorizationStatus() != .authorizedAlways || CLLocationManager.authorizationStatus() != .authorizedWhenInUse  {
-            populateFeaturesWithRoutes()
-        }
-    }
-    
-    // MARK: Use a custom user location dot.
-    func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
-        
-        if annotation is MGLUserLocation && mapView.userLocation != nil {
-            let annot = CustomUserLocationAnnotationView(frame: CGRect(x: 0, y: 0, width: 25, height: 25), color: (viewControllerTheme?.themeColor.primaryDarkColor)!)
-            
-            return annot
-        }
-        return nil
-    }
-    
-    func mapView(_ mapView: MGLMapView, didUpdate userLocation: MGLUserLocation?) {
-        if let coord = userLocation?.coordinate {
-            userLocationFeature.coordinate = coord
-            userLocationSource?.shape = userLocationFeature
-            
-            mapView.setCenter(coord, animated: false)
-            if CLLocationCoordinate2DIsValid(userLocationFeature.coordinate) {
-                populateFeaturesWithRoutes()
+    fileprivate var query: Query? {
+        didSet {
+            if let listener = listener {
+                listener.remove()
+                observeQuery()
             }
         }
     }
     
-    func addUserLocationDot(to style: MGLStyle) {
-        if !CLLocationCoordinate2DIsValid(userLocationFeature.coordinate) {
-            userLocationFeature.coordinate = centerCoordinate
-        }
-        
-        userLocationSource = MGLShapeSource(identifier: "user-location", features: [userLocationFeature], options: nil)
-        let userLocationStyle = MGLCircleStyleLayer(identifier: "user-location-style", source: userLocationSource!)
-        // Set the color for the user location dot, if applicable.
-        userLocationStyle.circleColor = NSExpression(forConstantValue: viewControllerTheme?.themeColor.primaryDarkColor)
-        userLocationStyle.circleRadius = NSExpression(forConstantValue: 7)
-        userLocationStyle.circleStrokeColor = NSExpression(forConstantValue: viewControllerTheme?.themeColor.primaryDarkColor)
-        userLocationStyle.circleStrokeWidth = NSExpression(forConstantValue: 4)
-        userLocationStyle.circleStrokeOpacity = NSExpression(forConstantValue: 0.5)
-        
-        style.addSource(userLocationSource!)
-        style.addLayer(userLocationStyle)
+    lazy private var filter: (navigationController: UINavigationController,
+        filterController: FilterTableViewController) = {
+            return FilterTableViewController.fromStoryboard(delegate: self)
+    }()
+    
+    fileprivate func stopObserving() {
+        listener?.remove()
     }
     
-    @objc func handleItemTap(sender: UIGestureRecognizer) {
-        if sender.state == .ended {
-            
-            let point = sender.location(in: sender.view!)
-            let layer: Set = ["store-locations"]
-            
-            if mapView.visibleFeatures(at: point, styleLayerIdentifiers: layer).count > 0 && !UIKit.UIDevice.current.orientation.isLandscape {
-                
-                // If there is an item at the tap's location, change the marker to the selected marker.
-                for feature in mapView.visibleFeatures(at: point, styleLayerIdentifiers: layer)
-                    where feature is MGLPointFeature {
-                        changeItemColor(feature: feature)
-                        generateItemPages(feature: feature as! MGLPointFeature)
-                        
-                        let mapViewSize = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height * 3/4)
-                        mapView.frame = mapViewSize
-                        pageViewController.view.isHidden = false
-                }
-            } else {
-                // If there isn't an item at the tap's location, reset the map.
-                changeItemColor(feature: MGLPointFeature())
-                
-                if let routeLineLayer = mapView.style?.layer(withIdentifier: "route-style") {
-                    routeLineLayer.isVisible = false
-                }
-                
-                pageViewController.view.isHidden = true
-                mapView.frame = view.bounds
-            }
-        }
-    }
+    private var listener: ListenerRegistration?
     
-    func changeItemColor(feature: MGLFeature) {
-        let layer = mapView.style?.layer(withIdentifier: "store-locations") as! MGLSymbolStyleLayer
-        if let name = feature.attribute(forKey: "name") as? String {
-            
-            // Change the icon to the selected icon based on the feature name. If multiple items have the same name, choose an attribute that is unique.
-            layer.iconImageName = NSExpression(format: "TERNARY(name = %@, 'selected_marker', 'unselected_marker')", name)
-            
-        } else {
-            // Deselect all items if no feature was selected.
-            layer.iconImageName = NSExpression(forConstantValue: "unselected_marker")
-        }
-    }
-    
-    // MARK: Directions methods.
-    // TODO: Reroute if the user's location has changed. Maybe check distance from origin and draw a new route if it's more that ~1000m?
-    // Get the coordinates for the route.
-    func getRoute(from origin: CLLocationCoordinate2D,
-                  to destination: MGLPointFeature) -> [CLLocationCoordinate2D]{
+    fileprivate func observeQuery() {
+        guard let query = query else { return }
+        stopObserving()
         
-        var routeCoordinates : [CLLocationCoordinate2D] = []
-        let originWaypoint = Waypoint(coordinate: origin)
-        let destinationWaypoint = Waypoint(coordinate: destination.coordinate)
+        let tabBar = tabBarController as! TabBarController
         
-        let options = RouteOptions(waypoints: [originWaypoint, destinationWaypoint], profileIdentifier: .automobileAvoidingTraffic)
-        
-        _ = Directions.shared.calculate(options) { (waypoints, routes, error) in
-            
-            guard error == nil else {
-                print("Error calculating directions: \(error!)")
+        listener = query.addSnapshotListener { [unowned self] (documents, error) in
+            guard let snapshot = documents else {
+                print("Error fetching snapshot results: \(error!)")
                 return
             }
             
-            guard let route = routes?.first else { return }
-            routeCoordinates = route.coordinates!
-            self.featuresWithRoute[self.getKeyForFeature(feature: destination)] = (destination, routeCoordinates)
-        }
-        return routeCoordinates
-    }
-    
-    func populateFeaturesWithRoutes() {
-        if CLLocationCoordinate2DIsValid(userLocationFeature.coordinate) {
-            for point in features {
-                let routeCoordinates = getRoute(from: userLocationFeature.coordinate, to: point)
-                featuresWithRoute[getKeyForFeature(feature: point)] = (point, routeCoordinates)
+            let models = snapshot.documents.map { (document) -> Location in
+                if let model = Location(dictionary: document.data(), id: document.documentID) {
+                    return model
+                } else {
+                    // Don't use fatalError here in a real app.
+                    fatalError("Unable to initialize type \(Location.self) with dictionary \(document.data())")
+                }
             }
-        }
-    }
-    
-    // Draw a route line using the stored route for a feature.
-    func drawRouteLine(from route: [CLLocationCoordinate2D]) {
-        if route.count > 0 {
-            if let routeStyleLayer = self.mapView.style?.layer(withIdentifier: "route-style") {
-                routeStyleLayer.isVisible = true
-            }
+            self.locations = models
+            self.documents = snapshot.documents
             
-            let polyline = MGLPolylineFeature(coordinates: route, count: UInt(route.count))
+            tabBar.locations = self.locations
             
-            if let source = self.mapView.style?.source(withIdentifier: "route-source") as? MGLShapeSource {
-                source.shape = polyline
+            if self.documents.count > 0 {
+               // TODO
             } else {
-                let source = MGLShapeSource(identifier: "route-source", features: [polyline], options: nil)
-                self.mapView.style?.addSource(source)
+                // TODO
+            }
+            
+            self.tableView.reloadData()
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        filterButton.applyDesign()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.layer.masksToBounds = true
+        tableView.layer.borderColor = UIColor.lightGray.cgColor
+            //UIColor( red: 153/255, green: 153/255, blue:0/255, alpha: 1.0 ).cgColor
+        tableView.layer.borderWidth = 0.5
+        //self.tableView.register(LocationTableViewCell.self, forCellReuseIdentifier: "locationCell")
+        
+        query = baseQuery()
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopObserving()
+    }
+    
+     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        observeQuery()
+    }
+    
+    // Build out the table of locations
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return locations.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "locationCell", for: indexPath) as! LocationTableViewCell
+ 
+        print("Cell: ", cell.locationLabel)
+        let location = locations[indexPath.row]
+        
+        cell.locationLabel!.text = location.location
+        
+        SDWebImageManager.shared().delegate = self
+        SDWebImageManager.shared().loadImage(with: URL(string: location.imageURL), options: [], progress: nil) { (image, data, error, cacheType, finished, url) in
+            // Do something
+            cell.locationImage.image = image
+        }
+        
+        // Add journey distance and travel time
+        // This needs to be set to users current location
+        
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
+            let currentLocation = locManager.location
+            
+            // Set lat/longs for location and current position
+            let currentLat = currentLocation!.coordinate.latitude
+            let currentLong = currentLocation!.coordinate.longitude
+            let locationLat = Double(location.latitude)
+            let locationLong = Double(location.longitude)
+            let locationName = location.location
+            
+            let origin = Waypoint(coordinate: CLLocationCoordinate2D(latitude: currentLat, longitude: currentLong), name: "Your Location")
+            let destination = Waypoint(coordinate: CLLocationCoordinate2D(latitude: locationLat ?? currentLat, longitude: locationLong ?? currentLong), name: locationName)
+            
+            let options = NavigationRouteOptions(waypoints: [origin, destination])
+            
+            Directions.shared.calculate(options) { (waypoints, routes, error) in
+                guard let route = routes?.first else { return }
                 
-                let lineStyle = MGLLineStyleLayer(identifier: "route-style", source: source)
+                let locationDistanceMiles = lround(route.distance / 1609.344)
+                let locationTravelTime = lround(route.expectedTravelTime / 60)
                 
-                // Set the line color to the theme's color.
-                lineStyle.lineColor = NSExpression(forConstantValue: self.viewControllerTheme?.themeColor.navigationLineColor)
-                lineStyle.lineJoin = NSExpression(forConstantValue: "round")
-                lineStyle.lineWidth = NSExpression(forConstantValue: 3)
-                
-                if let userDot = mapView.style?.layer(withIdentifier: "user-location-style") {
-                    self.mapView.style?.insertLayer(lineStyle, below: userDot)
-                } else {
-                    for layer in (mapView.style?.layers.reversed())! where layer.isKind(of: MGLSymbolStyleLayer.self) {
-                        self.mapView.style?.insertLayer(lineStyle, below: layer)
-                        break
-                    }
-                }
+                cell.journeyTime.text = String(locationTravelTime) + " Mins"
+                cell.journeyDistance.text = String(locationDistanceMiles) + " Miles"
             }
         }
-    }
-    
-    // Adds the page view controller that will become the callout.
-    func addPageViewController() {
-        pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        pageViewController.isDoubleSided = false
-        pageViewController.delegate = self
-        pageViewController.dataSource = self
-        pageViewController.view.frame = customItemViewSize
-        pageViewController.view.backgroundColor = viewControllerTheme?.themeColor.primaryDarkColor
-        pageViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        pageViewController.view.translatesAutoresizingMaskIntoConstraints = true
-        view.addSubview(pageViewController.view)
-        pageViewController.view.isHidden = true
-    }
-    
-    // Determine the feature that was tapped on.
-    func generateItemPages(feature: MGLPointFeature) {
         
-        mapView.centerCoordinate = feature.coordinate
-        selectedFeature = featuresWithRoute[getKeyForFeature(feature: feature)]
+        // Set promoted colour
+        let red = CGFloat(89/255.0)
+        let green = CGFloat(201/255.0)
+        let blue = CGFloat(165/255.0)
         
-        if let themeColor = viewControllerTheme?.themeColor, let iconImage = viewControllerTheme?.defaultMarker {
-            let vc = UIViewController()
-            itemView = CustomItemView(feature: feature, themeColor: themeColor, iconImage: iconImage)
-            itemView.frame = customItemViewSize
-            if let selectedRoute = selectedFeature?.1 {
-                drawRouteLine(from: selectedRoute)
-            }
-            vc.view = itemView
-            vc.view.autoresizingMask =  [ .flexibleHeight, .flexibleWidth ]
-            pageViewController.setViewControllers([vc], direction: .forward, animated: false, completion: nil)
+        // Style locations with marketing - promoted
+        if (location.location == "Porthcurno Beach") ||
+            (location.location == "St Michael’s Mount") ||
+            (location.location == "Trebah Garden") {
+            cell.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 0.2)
+        } else {
+            cell.backgroundColor = .white
         }
+
+        return cell
     }
     
-    // MARK: Functions to lookup features.
-    // Get the key for a feature.
-    func getKeyForFeature(feature: MGLPointFeature) -> String {
-        if let selectFeature = feature.attribute(forKey: uniqueIdentifier) as? String {
-            return selectFeature
-        }
-        return ""
+   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //imageURL = imageURL(from: locations[indexPath.row].imageURL)
+        location = [locations[indexPath.row]]
+    
+        performSegue(withIdentifier: "toLocationDetail", sender: self)
     }
     
-    // Get the index for a feature in the array of features.
-    func getIndexForFeature(feature: MGLPointFeature) -> Int {
-        // Filter the features based on a unique attribute. In this case, the location's phone number is used.
-        let selectFeature = features.filter({ $0.attribute(forKey: uniqueIdentifier) as! String == feature.attribute(forKey: uniqueIdentifier) as! String })
-        if let index = features.index(of: selectFeature.first!) {
-            return index
+    // Resize image from url to be consistent with UIImageView
+    func imageManager(_ imageManager: SDWebImageManager, transformDownloadedImage image: UIImage?, with imageURL: URL?) -> UIImage? {
+        guard let image = image, let imageURL = imageURL else {
+            return nil
         }
-        return 0
-    }
-    
-    // Hide callout when device is in landscape mode.
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        if UIDevice.current.orientation.isPortrait {
-            pageViewController.view.layoutSubviews()
-            if let viewController = pageViewController.viewControllers?.first {
-                viewController.view.layoutSubviews()
-            }
-        } else if UIDevice.current.orientation.isLandscape {
-            changeItemColor(feature: MGLPointFeature())
-            pageViewController.view.isHidden = true
-            mapView.frame = view.bounds
-            if let routeLineLayer = mapView.style?.layer(withIdentifier: "route-style") {
-                routeLineLayer.isVisible = false
-            }
+        if (imageURL.lastPathComponent == "large" && (image.size.width > 1000 || image.size.width > 1000)) {
+            let targetSize = CGSize(width: 82.5, height: 82.5)
+            UIGraphicsBeginImageContextWithOptions(targetSize, !SDCGImageRefContainsAlpha(image.cgImage), image.scale)
+            image.draw(in: CGRect(origin: .zero, size: targetSize))
+            
+            let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return scaledImage
+        } else {
+            return image
         }
     }
 }
 
-// MARK: UIPageViewControllerDelegate and UIPageViewControllerDataSource methods.
-extension HomeViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+extension HomeViewController: FilterTableViewControllerDelegate {
     
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        if let view = pendingViewControllers.first?.view as? CustomItemView {
-            selectedFeature = featuresWithRoute[getKeyForFeature(feature: view.selectedFeature)]
+    func query(beach: Bool?, cafe: Bool?, gardens: Bool?, historical: Bool?, trails: Bool?) -> Query {
+        var filtered = baseQuery()
+        
+        
+        // Applying filtering queries
+        if beach == true {
+            filtered = filtered.whereField("beach", isEqualTo: true)
         }
+        
+        if cafe == true {
+            filtered = filtered.whereField("cafe", isEqualTo: true)
+        }
+        
+        if gardens == true {
+            filtered = filtered.whereField("gardens", isEqualTo: true)
+        }
+        
+        if historical == true {
+            filtered = filtered.whereField("historical", isEqualTo: true)
+        }
+        
+        if trails == true {
+            filtered = filtered.whereField("trails", isEqualTo: true)
+        }
+        
+        return filtered
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        if let view = pageViewController.viewControllers?.first?.view as? CustomItemView {
-            if let currentFeature = featuresWithRoute[getKeyForFeature(feature: view.selectedFeature)] {
-                selectedFeature = currentFeature
-                mapView.centerCoordinate = (selectedFeature?.0.coordinate)!
-                drawRouteLine(from: (selectedFeature?.1)!)
-                changeItemColor(feature: (selectedFeature?.0)!)
-            }
-        }
+    func controller(_ controller: FilterTableViewController,
+                    beach: Bool?,
+                    cafe: Bool?,
+                    gardens: Bool?,
+                    historical: Bool?,
+                    trails: Bool?) {
+        let filtered = query(beach: beach, cafe: cafe, gardens: gardens, historical: historical, trails: trails)
+
+        self.query = filtered
+        observeQuery()
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if let currentFeature = selectedFeature?.0 {
-            let index = getIndexForFeature(feature: currentFeature)
-            let nextVC = UIViewController()
-            var nextFeature = MGLPointFeature()
-            
-            if let themeColor = viewControllerTheme?.themeColor, let iconImage = viewControllerTheme?.defaultMarker {
-                if index - 1 < 0 {
-                    nextFeature = features.last!
-                } else {
-                    nextFeature = features[index-1]
-                }
-                nextVC.view = CustomItemView(feature: nextFeature, themeColor: themeColor, iconImage: iconImage)
-                itemView = nextVC.view as! CustomItemView!
-            }
-            return nextVC
-        }
-        return nil
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if let currentFeature = selectedFeature?.0 {
-            
-            let index = getIndexForFeature(feature: currentFeature)
-            let nextVC = UIViewController()
-            var nextFeature = MGLPointFeature()
-            
-            
-            if let themeColor = viewControllerTheme?.themeColor, let iconImage = viewControllerTheme?.defaultMarker {
-                if index != (features.count - 1) {
-                    nextFeature = features[index+1]
-                } else {
-                    nextFeature = features[0]
-                }
-                print(nextFeature)
-                selectedFeature = featuresWithRoute[getKeyForFeature(feature: nextFeature)]
-                nextVC.view = CustomItemView(feature: nextFeature, themeColor: themeColor, iconImage: iconImage)
-                itemView = nextVC.view as! CustomItemView!
-            }
-            return nextVC
-            
-        }
-        return nil
+}
+
+extension UIButton {
+    func applyDesignToFilterButton() {
+        
+        let redUIColor = CGFloat(89/255.0)
+        let greenUIColor = CGFloat(201/255.0)
+        let blueUIColor = CGFloat(165/255.0)
+        
+        self.backgroundColor = UIColor(red: redUIColor, green: greenUIColor, blue: blueUIColor, alpha: 1.0)
+        self.layer.cornerRadius = 5
+        self.setTitleColor(UIColor.white, for: .normal)
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
 }
 
-// MARK: CustomItemView - The callout for the map.
-// Creates a custom item that displays information about the selected feature.
-class CustomItemView : UIView {
-    var selectedFeature = MGLPointFeature()
-    
-    @IBOutlet var containerView: CustomItemView!
-    @IBOutlet weak var itemNameLabel: UILabel!
-    @IBOutlet weak var itemHourLabel: UILabel!
-    @IBOutlet weak var hoursLabel: UILabel!
-    @IBOutlet weak var itemDescriptionLabel: UILabel!
-    @IBOutlet weak var itemPhoneNumberLabel: UILabel!
-    @IBOutlet weak var phoneNumberLabel: UILabel!
-    var iconImage = UIImage()
-    @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var headerView: UIView!
-    var routeDistance = ""
-    var themeColor : Color!
-    
-    override init(frame: CGRect) {
-        super.init(frame: CGRect())
-        
-        Bundle.main.loadNibNamed("CustomItemView", owner: self, options: nil)
-        backgroundColor = .purple
-        
-        self.frame = bounds
-        addSubview(containerView)
-        
-        containerView.frame = bounds
-        containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        containerView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        if containerView.headerView != nil {
-            containerView.headerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            containerView.headerView.translatesAutoresizingMaskIntoConstraints = false
-            containerView.headerView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height * 0.25)
-        }
-        
-        if containerView.iconImageView != nil {
-            containerView.iconImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            containerView.iconImageView.translatesAutoresizingMaskIntoConstraints = false
-        }
-    }
-    
-    required convenience init(feature: MGLPointFeature, themeColor: Color, iconImage: UIImage) {
-        
-        self.init(frame: CGRect())
-        self.themeColor = themeColor
-        self.iconImage = iconImage
-        self.selectedFeature = feature
-        
-        createItemView()
-        
-        updateLabels()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    // MARK: Update the attribute keys based on your data's format.
-    public func updateLabels() {
-        if let name : String = selectedFeature.attribute(forKey: "name") as? String {
-            containerView.itemNameLabel.text = name
-        }
-        if let hours : String = selectedFeature.attribute(forKey: "hours") as? String {
-            containerView.itemHourLabel.text = hours
-        }
-        if let description : String = selectedFeature.attribute(forKey: "description") as? String  {
-            containerView.itemDescriptionLabel.text = description
-        }
-        
-        if let number : String = selectedFeature.attribute(forKey: "phone") as? String  {
-            containerView.itemPhoneNumberLabel.text = number
-        }
-    }
-    
-    func createItemView() {
-        
-        containerView.headerView.backgroundColor = themeColor.primaryDarkColor
-        
-        // Create the icon image for the logo.
-        containerView.iconImageView.image = iconImage
-        
-        // Create item name label.
-        containerView.itemNameLabel.textColor = .white
-        
-        // Create description label.
-        containerView.itemDescriptionLabel.textColor = .white
-        
-        // Create hours open label.
-        containerView.itemHourLabel.textColor = themeColor.lowerCardTextColor
-        
-        //Create phone number label.
-        containerView.itemPhoneNumberLabel.textColor = themeColor.lowerCardTextColor
-        
-        // Static labels for attributes.
-        containerView.hoursLabel.textColor = themeColor.lowerCardTextColor
-        
-        containerView.phoneNumberLabel.textColor = themeColor.lowerCardTextColor
-    }
-}
 
-class CustomUserLocationAnnotationView: MGLUserLocationAnnotationView {
-    var border: CALayer!
-    var dot: CALayer!
-    let size = 5
-    var color : UIColor!
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.frame = frame
-    }
-    
-    convenience init(frame: CGRect, color: UIColor) {
-        self.init(frame: frame)
-        self.color = color
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    override func update() {
-        if frame.isNull {
-            frame = CGRect(x: 0, y: 0, width: size, height: size)
-            return setNeedsLayout()
-        }
-        if CLLocationCoordinate2DIsValid(self.userLocation!.coordinate) {
-            setupDot()
-        }
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    func setupDot() {
-        if dot == nil || border == nil {
-            border = CALayer()
-            border.bounds = bounds
-            border.cornerRadius = border.bounds.width / 2
-            border.backgroundColor = color.cgColor
-            border.opacity = 0.0
-            dot = CALayer()
-            dot.bounds = CGRect(x: 0, y: 0, width: size * 2 / 3, height: size * 2 / 3)
-            dot.cornerRadius = dot.bounds.width / 2
-            dot.backgroundColor = color.cgColor
-            dot.opacity = 0.0
-            layer.addSublayer(border)
-            layer.addSublayer(dot)
-        }
-    }
 
-}

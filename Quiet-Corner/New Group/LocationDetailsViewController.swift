@@ -62,11 +62,6 @@ class LocationDetailsViewController: UIViewController, SDWebImageManagerDelegate
             self.locationImage.image = image
         }
         
-//        SDWebImageManager.shared().loadImage(with: URL(string: "https://static2.bigstockphoto.com/2/6/2/large1500/262292797.jpg"), options: [], progress: nil) { (image, data, error, cacheType, finished, url) in
-//            // Do something
-//            self.advertImage.image = image
-//        }
-        
         // Display advert for Locations that have paid for advertising
         if location[0].location == "Porthcurno Beach" {
             self.advertImage.image = UIImage(named: "porthcurno-advert")
