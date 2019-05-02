@@ -27,17 +27,14 @@
 		0C6193F922774D1A00EDA18B /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193EC22774D1A00EDA18B /* OpenSans-SemiboldItalic.ttf */; };
 		0C6193FA22774D1A00EDA18B /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193ED22774D1A00EDA18B /* OpenSans.ttf */; };
 		0C6193FB22774D1A00EDA18B /* OpenSansLight-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C6193EE22774D1A00EDA18B /* OpenSansLight-Italic.ttf */; };
-		0C858889224BDFF30016A584 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C858888224BDFF30016A584 /* ViewController.swift */; };
 		0C85888B224BE6470016A584 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C85888A224BE6470016A584 /* Themes.swift */; };
 		0C85888D224BE6F10016A584 /* locations.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 0C85888C224BE6F10016A584 /* locations.geojson */; };
-		0C85888F224BEB310016A584 /* CustomItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C85888E224BEB310016A584 /* CustomItemView.xib */; };
 		0CAB53A22275B96600BF6D27 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAB53A12275B96600BF6D27 /* MapViewController.swift */; };
 		0CAB53A82275ED8000BF6D27 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAB53A72275ED8000BF6D27 /* TabBarController.swift */; };
 		0CB038D22268A6D5001D41BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB038D12268A6D5001D41BD /* ProfileViewController.swift */; };
 		0CB038D42268B59B001D41BD /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB038D32268B59B001D41BD /* CurrentUser.swift */; };
 		0CCF3D16225518ED00D8887F /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCF3D15225518ED00D8887F /* FilterTableViewController.swift */; };
-		0CCF3D19225BBE8200D8887F /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCF3D17225BBE8200D8887F /* HomeTableViewController.swift */; };
-		0CCF3D1A225BBE8200D8887F /* HomeTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CCF3D18225BBE8200D8887F /* HomeTableViewController.xib */; };
+		0CCF3D19225BBE8200D8887F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCF3D17225BBE8200D8887F /* HomeViewController.swift */; };
 		0CE0AF96225BCF0000B961C6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE0AF94225BCF0000B961C6 /* User.swift */; };
 		0CE0AF9A225CEA0200B961C6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE0AF99225CEA0200B961C6 /* Location.swift */; };
 		0CE0AF9E225D06EC00B961C6 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE0AF9D225D06EC00B961C6 /* LocationTableViewCell.swift */; };
@@ -68,17 +65,14 @@
 		0C6193EC22774D1A00EDA18B /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		0C6193ED22774D1A00EDA18B /* OpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSans.ttf; sourceTree = "<group>"; };
 		0C6193EE22774D1A00EDA18B /* OpenSansLight-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSansLight-Italic.ttf"; sourceTree = "<group>"; };
-		0C858888224BDFF30016A584 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0C85888A224BE6470016A584 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		0C85888C224BE6F10016A584 /* locations.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = locations.geojson; sourceTree = "<group>"; };
-		0C85888E224BEB310016A584 /* CustomItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomItemView.xib; sourceTree = "<group>"; };
 		0CAB53A12275B96600BF6D27 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0CAB53A72275ED8000BF6D27 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		0CB038D12268A6D5001D41BD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0CB038D32268B59B001D41BD /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		0CCF3D15225518ED00D8887F /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
-		0CCF3D17225BBE8200D8887F /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
-		0CCF3D18225BBE8200D8887F /* HomeTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewController.xib; sourceTree = "<group>"; };
+		0CCF3D17225BBE8200D8887F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0CE0AF94225BCF0000B961C6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0CE0AF99225CEA0200B961C6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		0CE0AF9D225D06EC00B961C6 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
@@ -167,12 +161,9 @@
 		0CCF3D1C225BBF6700D8887F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				0CCF3D17225BBE8200D8887F /* HomeTableViewController.swift */,
-				0CCF3D18225BBE8200D8887F /* HomeTableViewController.xib */,
+				0CCF3D17225BBE8200D8887F /* HomeViewController.swift */,
 				0C3209EF2219F58100C1CFEA /* SplashViewController.swift */,
 				0CCF3D15225518ED00D8887F /* FilterTableViewController.swift */,
-				0C858888224BDFF30016A584 /* ViewController.swift */,
-				0C85888E224BEB310016A584 /* CustomItemView.xib */,
 				0CE0AF9D225D06EC00B961C6 /* LocationTableViewCell.swift */,
 				0CB038D12268A6D5001D41BD /* ProfileViewController.swift */,
 				0C137424227359E200B73D54 /* LocationDetailsViewController.swift */,
@@ -279,13 +270,11 @@
 			files = (
 				0C6193F122774D1A00EDA18B /* OpenSans-CondensedBold.ttf in Resources */,
 				0C6193F522774D1A00EDA18B /* OpenSans-ExtraBoldItalic.ttf in Resources */,
-				0C85888F224BEB310016A584 /* CustomItemView.xib in Resources */,
 				0C6193F622774D1A00EDA18B /* OpenSans-Italic.ttf in Resources */,
 				0C3209F82219F58300C1CFEA /* LaunchScreen.storyboard in Resources */,
 				0C6193EF22774D1A00EDA18B /* OpenSans-Bold.ttf in Resources */,
 				0C6193FB22774D1A00EDA18B /* OpenSansLight-Italic.ttf in Resources */,
 				0C320A002219F6AB00C1CFEA /* GoogleService-Info.plist in Resources */,
-				0CCF3D1A225BBE8200D8887F /* HomeTableViewController.xib in Resources */,
 				0C6193F322774D1A00EDA18B /* OpenSans-CondensedLightItalic.ttf in Resources */,
 				0C3209F52219F58300C1CFEA /* Assets.xcassets in Resources */,
 				0C6193FA22774D1A00EDA18B /* OpenSans.ttf in Resources */,
@@ -444,7 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CCF3D19225BBE8200D8887F /* HomeTableViewController.swift in Sources */,
+				0CCF3D19225BBE8200D8887F /* HomeViewController.swift in Sources */,
 				0CCF3D16225518ED00D8887F /* FilterTableViewController.swift in Sources */,
 				0CB038D42268B59B001D41BD /* CurrentUser.swift in Sources */,
 				0CB038D22268A6D5001D41BD /* ProfileViewController.swift in Sources */,
@@ -456,7 +445,6 @@
 				0C3209EE2219F58100C1CFEA /* AppDelegate.swift in Sources */,
 				0CE7164D2268E32C00310160 /* Filters.swift in Sources */,
 				0CE0AF9E225D06EC00B961C6 /* LocationTableViewCell.swift in Sources */,
-				0C858889224BDFF30016A584 /* ViewController.swift in Sources */,
 				0CAB53A82275ED8000BF6D27 /* TabBarController.swift in Sources */,
 				0CAB53A22275B96600BF6D27 /* MapViewController.swift in Sources */,
 			);

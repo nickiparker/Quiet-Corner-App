@@ -31,8 +31,6 @@ class SplashViewController: UIViewController {
         //  }
     }
     
-    
-    
     override func viewDidAppear(_ animated: Bool) {
         if isLoggedIn() {
             // assume user is logged in

@@ -2,7 +2,7 @@
 //  MapViewController.swift
 //  Quiet-Corner
 //
-//  Created by JODIE PARKER on 28/04/2019.
+//  Created by NICKI PARKER on 28/04/2019.
 //  Copyright © 2019 Nickiparker. All rights reserved.
 //
 
@@ -46,6 +46,9 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
             // Set lat/longs for location and current position
             let currentLat = currentLocation!.coordinate.latitude
             let currentLong = currentLocation!.coordinate.longitude
+            
+            // Allow the map view to display the user's location
+            mapView.showsUserLocation = true
             
             // Set the map’s center coordinate and zoom level.
             mapView.setCenter(CLLocationCoordinate2D(latitude: currentLat, longitude: currentLong), zoomLevel: 8.5, animated: false)
@@ -109,26 +112,6 @@ class MapViewController: UIViewController, MGLMapViewDelegate {
         
         return annotationView
     }
-    
-    // This delegate method is where you tell the map to load an image for a specific annotation based on the willUseImage property of the custom subclass.
-//    func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
-//
-//        if let castAnnotation = annotation as? MyCustomPointAnnotation {
-//            if (!castAnnotation.willUseImage) {
-//                return nil
-//            }
-//        }
-//
-//        // For better performance, always try to reuse existing annotations.
-//        var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "camera")
-//
-//        // If there is no reusable annotation image available, initialize a new one.
-//        if(annotationImage == nil) {
-//           // annotationImage = MGLAnnotationImage(image: UIImage(named: "camera")!, reuseIdentifier: "camera")
-//        }
-//
-//        return annotationImage
-//    }
     
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
         // Always allow callouts to popup when annotations are tapped.

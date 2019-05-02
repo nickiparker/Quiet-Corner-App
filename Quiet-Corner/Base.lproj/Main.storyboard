@@ -325,7 +325,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qa9-V7-lJh">
-                                <rect key="frame" x="0.0" y="58" width="375" height="576"/>
+                                <rect key="frame" x="0.0" y="60" width="375" height="574"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" rowHeight="87" id="BB1-iW-Aop" userLabel="ItemCell" customClass="LocationTableViewCell" customModule="Quiet_Corner" customModuleProvider="target">
@@ -421,7 +421,8 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tm-SY-ibB">
-                                <rect key="frame" x="273" y="15" width="81" height="30"/>
+                                <rect key="frame" x="273" y="10" width="81" height="36"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <state key="normal" title="Filters">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -432,12 +433,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qa9-V7-lJh" firstAttribute="top" secondItem="4tm-SY-ibB" secondAttribute="bottom" constant="13" id="60w-1s-G11"/>
+                            <constraint firstItem="qa9-V7-lJh" firstAttribute="top" secondItem="4tm-SY-ibB" secondAttribute="bottom" constant="14" id="60w-1s-G11"/>
                             <constraint firstAttribute="bottomMargin" secondItem="qa9-V7-lJh" secondAttribute="bottom" constant="-80" id="F1Q-VS-JVT"/>
                             <constraint firstItem="4tm-SY-ibB" firstAttribute="leading" secondItem="4EF-zm-JDk" secondAttribute="leading" constant="273" id="Sgo-q1-vLt"/>
-                            <constraint firstItem="4tm-SY-ibB" firstAttribute="top" secondItem="4EF-zm-JDk" secondAttribute="top" constant="15" id="TD4-L9-lhX"/>
+                            <constraint firstItem="4tm-SY-ibB" firstAttribute="top" secondItem="4EF-zm-JDk" secondAttribute="top" constant="10" id="TD4-L9-lhX"/>
                             <constraint firstAttribute="trailing" secondItem="qa9-V7-lJh" secondAttribute="trailing" id="XW0-ON-4Up"/>
                             <constraint firstItem="4EF-zm-JDk" firstAttribute="trailing" secondItem="4tm-SY-ibB" secondAttribute="trailing" constant="21" id="elT-RP-Mhf"/>
+                            <constraint firstItem="4tm-SY-ibB" firstAttribute="top" secondItem="4EF-zm-JDk" secondAttribute="top" constant="10" id="fkU-0V-N4e"/>
                             <constraint firstItem="qa9-V7-lJh" firstAttribute="leading" secondItem="gQT-iE-jqK" secondAttribute="leading" id="zRf-hF-TDn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4EF-zm-JDk"/>

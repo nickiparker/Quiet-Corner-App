@@ -100,6 +100,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         filterButton.applyDesign()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.layer.masksToBounds = true
+        tableView.layer.borderColor = UIColor.lightGray.cgColor
+            //UIColor( red: 153/255, green: 153/255, blue:0/255, alpha: 1.0 ).cgColor
+        tableView.layer.borderWidth = 0.5
         //self.tableView.register(LocationTableViewCell.self, forCellReuseIdentifier: "locationCell")
         
         query = baseQuery()
