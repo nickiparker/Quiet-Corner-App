@@ -348,13 +348,13 @@
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journey Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwc-g5-iFf">
-                                                    <rect key="frame" x="248" y="51" width="79" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwc-g5-iFf">
+                                                    <rect key="frame" x="248" y="51" width="52.5" height="17"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journey Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfe-G0-zFO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfe-G0-zFO">
                                                     <rect key="frame" x="142" y="51" width="70" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="6k4-Ef-M8j"/>
@@ -412,8 +412,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="journeyDistance" destination="zfe-G0-zFO" id="w7X-lI-14w"/>
-                                            <outlet property="journeyTime" destination="mwc-g5-iFf" id="IRr-7Y-tky"/>
+                                            <outlet property="journeyDistance" destination="mwc-g5-iFf" id="StF-9Z-Ozk"/>
+                                            <outlet property="journeyTime" destination="zfe-G0-zFO" id="nbf-Ao-8ht"/>
                                             <outlet property="locationImage" destination="idi-QJ-HUx" id="e9K-bn-A00"/>
                                             <outlet property="locationLabel" destination="cA7-f2-cJl" id="aru-Lf-XK7"/>
                                         </connections>
@@ -421,7 +421,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tm-SY-ibB">
-                                <rect key="frame" x="273" y="10" width="81" height="36"/>
+                                <rect key="frame" x="273" y="10" width="83.5" height="36"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <state key="normal" title="Filters">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -438,7 +438,7 @@
                             <constraint firstItem="4tm-SY-ibB" firstAttribute="leading" secondItem="4EF-zm-JDk" secondAttribute="leading" constant="273" id="Sgo-q1-vLt"/>
                             <constraint firstItem="4tm-SY-ibB" firstAttribute="top" secondItem="4EF-zm-JDk" secondAttribute="top" constant="10" id="TD4-L9-lhX"/>
                             <constraint firstAttribute="trailing" secondItem="qa9-V7-lJh" secondAttribute="trailing" id="XW0-ON-4Up"/>
-                            <constraint firstItem="4EF-zm-JDk" firstAttribute="trailing" secondItem="4tm-SY-ibB" secondAttribute="trailing" constant="21" id="elT-RP-Mhf"/>
+                            <constraint firstItem="4EF-zm-JDk" firstAttribute="trailing" secondItem="4tm-SY-ibB" secondAttribute="trailing" constant="18.5" id="elT-RP-Mhf"/>
                             <constraint firstItem="4tm-SY-ibB" firstAttribute="top" secondItem="4EF-zm-JDk" secondAttribute="top" constant="10" id="fkU-0V-N4e"/>
                             <constraint firstItem="qa9-V7-lJh" firstAttribute="leading" secondItem="gQT-iE-jqK" secondAttribute="leading" id="zRf-hF-TDn"/>
                         </constraints>
@@ -493,13 +493,13 @@
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.3294117647" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.14901960780000001" green="0.3294117647" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journey Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qR-yW-mdD">
-                                <rect key="frame" x="233" y="172" width="102" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qR-yW-mdD">
+                                <rect key="frame" x="233" y="172" width="67" height="18"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journey Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfi-yx-IqM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfi-yx-IqM">
                                 <rect key="frame" x="101" y="172" width="96" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="Vtu-1a-7CK"/>
@@ -580,8 +580,8 @@
                     <connections>
                         <outlet property="advertImage" destination="Her-9x-5QA" id="avR-jD-Lg1"/>
                         <outlet property="goNavigationButton" destination="j1S-89-ExB" id="EgN-c2-RZB"/>
-                        <outlet property="journeyDistance" destination="Gfi-yx-IqM" id="9Qm-J4-wx0"/>
-                        <outlet property="journeyTime" destination="8qR-yW-mdD" id="bI1-zc-13S"/>
+                        <outlet property="journeyDistance" destination="8qR-yW-mdD" id="YuD-8l-yO6"/>
+                        <outlet property="journeyTime" destination="Gfi-yx-IqM" id="agU-qg-Ahl"/>
                         <outlet property="locationDescription" destination="4JA-na-C18" id="qO2-Se-rhw"/>
                         <outlet property="locationImage" destination="cj7-Ay-m2J" id="uSX-7m-auv"/>
                         <outlet property="locationLabel" destination="YGW-qz-SMD" id="byi-8Y-ZuW"/>
